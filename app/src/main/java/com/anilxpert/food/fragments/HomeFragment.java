@@ -1,12 +1,16 @@
 package com.anilxpert.food.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.anilxpert.food.R;
+import com.anilxpert.food.activity.OrderSelectActivity;
+import com.anilxpert.food.utils.Utils;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
@@ -21,9 +25,10 @@ import java.util.List;
  * Created by ANDROID.
  */
 
-public class Home extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private SliderLayout mDemoSlider;
+    private TextView selectOutlet;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,9 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frg_home, container, false);
         slidingImage(getList(), view);
+        selectOutlet = (TextView) view.findViewById(R.id.select_outlet);
+
+        selectOutlet.setOnClickListener(this);
         return view;
     }
 
@@ -74,4 +82,13 @@ public class Home extends Fragment {
         // mDemoSlider.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.select_outlet:
+                Utils.startActivity(getContext(), OrderSelectActivity.class);
+
+                break;
+        }
+    }
 }

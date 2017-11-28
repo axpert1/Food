@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Food</string>
+    <string name="app_name">Xiao Man Niu</string>
+
 
     <!--login-->
     <string name="str_sign_in"> Sign in </string>
@@ -12,4 +13,35 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+
+    <!--home fregmet-->
+    <string name="select_outlet"> Select Outlet </string>
+
+    <!--profile fregment-->
+    <string name="account_information"> Account Information </string>
+
+
+    <!--nevigation drawer-->
+    <string name="n_home"> Home </string>
+    <string name="n_my_profile"> My Profile </string>
+    <string name="n_my_orders"> My Orders </string>
+    <string name="n_find_us"> Find Us </string>
+    <string name="n_faq"> FAQ </string>
+    <string name="n_terms_of_use"> Terms of Use </string>
+    <string name="n_privacy_policy"> Privacy Policy </string>
+    <string name="n_contact_us"> Contact Us </string>
+    <string name="n_sign_in"> Sign In </string>
+    <string name="n_register"> Register </string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mobile_no">Mobile Number</string>
+    <string name="email_address">Email </string>
+    <string name="save">SAVE</string>
+    <string name="password">Password</string>
+
+    <!--tabs-->
+    <string name="spiceness_level">Spiceness level</string>
+    <string name="dry_shop">Dry or Soup</string>
+    <string name="mala">Mala Xiang Guo</string>
 </resources>

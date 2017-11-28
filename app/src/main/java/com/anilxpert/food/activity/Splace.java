@@ -21,7 +21,7 @@ public class Splace extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(3000);
-                    Intent intent = new Intent(Splace.this, LoginActivity.class);
+                    Intent intent = new Intent(Splace.this, SelectionActivity.class);
                     startActivity(intent);
                     Splace.this.finish();
 

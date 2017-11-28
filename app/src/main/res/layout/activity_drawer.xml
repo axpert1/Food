@@ -20,7 +20,120 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/activity_drawer_drawer" />
+        android:background="@color/nevBg"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_40"
+                android:padding="10dp"
+                android:text="@string/n_home"
+                android:textColor="@color/txtWhite"
+                android:textSize="@dimen/sp_20" />
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/myprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_40"
+                android:padding="10dp"
+                android:text="@string/n_my_profile"
+                android:textColor="@color/txtWhite"
+                android:textSize="@dimen/sp_20" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/myorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/n_my_orders"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/find"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/n_find_us"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/faq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/n_faq"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/terms_of_use"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/n_terms_of_use"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/privacu_policy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/n_privacy_policy"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/contect_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/n_contact_us"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/sign_in"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_rect_orage"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/n_sign_in"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="17dp" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/register"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_rect_orage"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/n_register"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="17dp" />
+
+        </LinearLayout>
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

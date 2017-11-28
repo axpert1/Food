@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#ff5103</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="nevBg">#21282D</color>
 
 
     <!--Splace-->
@@ -15,7 +16,13 @@
     <color name="bgBlack">#000000</color>
     <color name="btnRed">#dc2a38</color>
 
-    <!--Home-->
+    <!--Broder-->
+    <color name="broderColors">#eeeeee</color>
+
+
+    <!--textcolors-->
+    <color name="txtBlack">#000000</color>
+    <color name="txtWhite">#ffffff</color>
 
 
 </resources>

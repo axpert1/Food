@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-1dp"
+                android:background="@drawable/bordrecolor"
+                android:paddingBottom="12dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/email_address"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-1dp"
+                android:background="@drawable/bordrecolor"
+                android:paddingBottom="12dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/password"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/forget_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minHeight="@dimen/dp_40"
+
+                android:text="Forget Password"
+                android:textAlignment="center"
+                android:textColor="@color/txtBlack" />
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/sign_in_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="#DB3732"
+                android:gravity="center_horizontal"
+                android:paddingBottom="15dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="15dp"
+                android:text="Sign In"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:src="@drawable/capture" />
+
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/fb_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3b5998"
+                android:gravity="center_horizontal"
+                android:paddingBottom="15dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="15dp"
+                android:text="Sign in with Facebook"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

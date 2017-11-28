@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relative_tab2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/error_tb2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:padding="10dp" />
+
+            <LinearLayout
+                android:id="@+id/liner1_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordrecolor">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Please choose what do you loveline \n before proceed"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_tab2"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/dry_radio_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="@drawable/bordrecolor"
+                android:button="@drawable/check_selector"
+                android:layoutDirection="rtl"
+                android:padding="15dp"
+                android:text="Dry"
+                android:textAlignment="textStart"
+                android:textSize="15dp" />
+
+
+            <RadioButton
+                android:id="@+id/soup_radio_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="-1dp"
+                android:background="@drawable/bordrecolor"
+                android:button="@drawable/check_selector"
+                android:layoutDirection="rtl"
+                android:padding="15dp"
+                android:text="Soup"
+                android:textAlignment="textStart"
+                android:textSize="15dp" />
+
+
+        </RadioGroup>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

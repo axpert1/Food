@@ -1,32 +1,30 @@
 package com.anilxpert.food.activity;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.anilxpert.food.R;
+import com.anilxpert.food.loopjServcice.Constant;
 import com.anilxpert.food.utils.Utils;
 
 /**
  * Created by AnilXpert 9887230800 on 11/21/2017.
  */
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class SelectionActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnSignup;
     private Button btnRegister;
     private Button btnMenu;
-
     private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_login);
-        mContext = LoginActivity.this;
+        mContext = SelectionActivity.this;
         inslisization();
     }
 
@@ -45,8 +43,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSignUp:
+                Utils.startActivityPutValue(SelectionActivity.this, LogRegActivity.class,  getString(R.string.str_sign_in));
                 break;
             case R.id.btnRegister:
+                Utils.startActivityPutValue(SelectionActivity.this, LogRegActivity.class,  getString(R.string.str_register));
+
                 break;
             case R.id.btnMenu:
                 Utils.startActivity(mContext, DashBordActivity.class);
