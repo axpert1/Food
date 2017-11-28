@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff5103</color>
+    <color name="colorPrimaryDark">#ff5103</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#ffffff</color>
+
+
+    <!--Splace-->
+    <color name="orangeSplace">#ffa902</color>
+
+    <!--Login-->
+
+    <color name="btnRippleLogin">#fafaf8</color>
+    <color name="bgBlack">#000000</color>
+    <color name="btnRed">#dc2a38</color>
+
+    <!--Home-->
+
+
+</resources>
