@@ -42,12 +42,12 @@ public class DashBordActivity extends AppCompatActivity
     private TextView myorder;
     private TextView myprofile;
     private TextView find;
-    private TextView register;
     private TextView contect_us;
     private TextView faq;
     private TextView privacy_policy;
     private TextView terms_of_use;
     private TextView sign_in;
+    private TextView register;
 
 
     //constant
@@ -81,6 +81,7 @@ public class DashBordActivity extends AppCompatActivity
         home = (TextView) findViewById(R.id.myprofile);
         myprofile = (TextView) findViewById(R.id.home);
         register = (TextView) findViewById(R.id.register);
+        sign_in = (TextView) findViewById(R.id.sign_in);
         myorder = (TextView) findViewById(R.id.myorder);
         find = (TextView) findViewById(R.id.find);
         contect_us = (TextView) findViewById(R.id.contect_us);
@@ -90,13 +91,16 @@ public class DashBordActivity extends AppCompatActivity
 
         home.setOnClickListener(this);
         myprofile.setOnClickListener(this);
-        register.setOnClickListener(this);
+
         myorder.setOnClickListener(this);
         find.setOnClickListener(this);
         contect_us.setOnClickListener(this);
         faq.setOnClickListener(this);
         terms_of_use.setOnClickListener(this);
         privacy_policy.setOnClickListener(this);
+
+        register.setOnClickListener(this);
+        sign_in.setOnClickListener(this);
 
 //
 //        fragment = new HomeFragment();
@@ -278,7 +282,16 @@ public class DashBordActivity extends AppCompatActivity
                     gotoNextScreen(fragment, getString(R.string.n_privacy_policy));
                 }
                 break;
+            case R.id.sign_in:
+                drawerClose();
+                Utils.startActivityPutValue(DashBordActivity.this, LogRegActivity.class, getString(R.string.str_sign_in));
 
+                break;
+            case R.id.register:
+                drawerClose();
+                Utils.startActivityPutValue(DashBordActivity.this, LogRegActivity.class, getString(R.string.str_register));
+
+                break;
 
         }
         drawerClose();
