@@ -38,4 +38,8 @@ dependencies {
     //loopj android web service
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.google.code.gson:gson:2.7'
+
+    //facebook
+    compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+
 }

@@ -5,93 +5,123 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="20dp"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout">
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
-        <TextView
+        <com.anilxpert.food.custom_class.TextViewRegularBold
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:gravity="center"
             android:text="We value your input on our service."
-            android:textSize="15dp"
-            android:textColor="#000"
-            android:layout_marginBottom="4dp"
-            />
+            android:textColor="@color/txtBlack"
+            android:textSize="@dimen/sp_16" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="12dp"
-            android:layout_marginTop="-1dp"
-            android:paddingBottom="12dp"
-            android:background="@drawable/bordrecolor"
-            android:layout_height="wrap_content">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:background="@null"
-                android:hint="Name"
-                android:maxLines="1"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="12dp"
-            android:layout_marginTop="-1dp"
-            android:paddingBottom="12dp"
-            android:background="@drawable/bordrecolor"
-            android:layout_height="wrap_content">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:background="@null"
-                android:hint="Email Address"
-                android:maxLines="1"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="12dp"
-            android:layout_marginTop="-1dp"
-            android:paddingBottom="12dp"
-            android:background="@drawable/bordrecolor"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:background="@null"
-                android:hint="Mobile Number"
-                android:maxLines="1"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <android.support.design.widget.TextInputLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/shipper_layout"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bordrecolor"
-            android:layout_marginTop="-1dp">
+            android:background="@drawable/bordrecolor">
 
-            <EditText
-                android:id="@+id/shipper_field"
+            <com.anilxpert.food.custom_class.EditTextViewRegular
+                android:id="@+id/edtName"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/name"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:minHeight="40dp"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+
+            android:layout_height="wrap_content"
+            android:background="@drawable/bordrecolor">
+
+            <com.anilxpert.food.custom_class.EditTextViewRegular
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/email_address"
+                android:maxLines="1"
+                android:minHeight="40dp"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+
+            android:layout_height="wrap_content"
+            android:background="@drawable/bordrecolor">
+
+            <com.anilxpert.food.custom_class.EditTextViewRegular
+                android:id="@+id/edtMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/mobile_no"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:minHeight="40dp"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+
+            android:layout_height="wrap_content"
+            android:background="@drawable/bordrecolor">
+
+            <com.anilxpert.food.custom_class.EditTextViewRegular
+                android:id="@+id/edtMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="top"
-                android:hint="Commnets"
-                android:inputType="textMultiLine"
+                android:hint="@string/message"
+                android:inputType="textMultiLine|textCapSentences"
+                android:minLines="6"
+
                 android:overScrollMode="always"
                 android:padding="6dp"
                 android:scrollbarStyle="insideInset"
-                android:scrollbars="vertical" />
-        </android.support.design.widget.TextInputLayout>
+                android:scrollbars="vertical"
+                android:textSize="@dimen/sp_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:gravity="center">
+
+            <com.anilxpert.food.custom_class.RippleViewButton
+                android:id="@+id/btnSend"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/btnRed"
+                android:gravity="center"
+
+                android:minHeight="@dimen/dp_40"
+                android:paddingLeft="@dimen/dp_40"
+                android:paddingRight="@dimen/dp_40"
+                android:text="@string/submit"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -3,6 +3,7 @@
     package="com.anilxpert.food">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".AppInitialization"
         android:allowBackup="true"
@@ -37,6 +38,14 @@
         <activity
             android:name=".activity.OrderSummryActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

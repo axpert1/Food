@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.anilxpert.food.R;
+import com.anilxpert.food.loopjServcice.ConstantField;
+import com.anilxpert.food.utils.SharedPref;
+import com.anilxpert.food.utils.Utils;
 
 public class Splace extends AppCompatActivity {
 
@@ -14,6 +17,7 @@ public class Splace extends AppCompatActivity {
         setContentView(R.layout.view_splace);
         threadSplace();
     }
+
     private void threadSplace() {
 
         new Thread(new Runnable() {
@@ -21,9 +25,12 @@ public class Splace extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(3000);
-                    Intent intent = new Intent(Splace.this, SelectionActivity.class);
-                    startActivity(intent);
-                    Splace.this.finish();
+                    if (SharedPref.getSP(ConstantField.USER_ID) == null) {
+                        Utils.clearPriviousActivity(Splace.this, SelectionActivity.class);
+                    } else {
+                        Utils.clearPriviousActivity(Splace.this, DashBordActivity.class);
+                    }
+
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -4,10 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <LinearLayout
+        android:id="@+id/sininLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
         android:orientation="vertical">
 
         <com.anilxpert.food.custom_class.TextViewRegularBold
@@ -47,12 +55,14 @@
                 android:layout_weight="1"
                 android:gravity="right">
 
-                <EditText
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtFName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
-                    android:gravity="center|right" />
+                    android:gravity="center|right"
+                    android:textColor="@color/bgBlack" />
 
             </LinearLayout>
         </LinearLayout>
@@ -88,14 +98,14 @@
                 android:gravity="right"
                 android:weightSum="1">
 
-                <EditText
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtLName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
-
-                    android:text="Tan" />
+                    android:textColor="@color/bgBlack" />
 
             </LinearLayout>
         </LinearLayout>
@@ -132,13 +142,14 @@
 
                 android:weightSum="1">
 
-                <EditText
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtMobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
-                    android:text="1234567890"
+                    android:text="hello"
                     android:textColor="@color/txtBlack" />
 
             </LinearLayout>
@@ -175,13 +186,13 @@
                 android:gravity="right"
                 android:weightSum="1">
 
-                <EditText
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
-                    android:text="Jack.tan@mail.com"
                     android:textColor="@color/txtBlack" />
 
             </LinearLayout>
@@ -191,7 +202,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/textView4"

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.anilxpert.food.R;
-import com.anilxpert.food.loopjServcice.Constant;
 import com.anilxpert.food.utils.Utils;
 
 /**

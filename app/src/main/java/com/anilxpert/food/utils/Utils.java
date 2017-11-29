@@ -8,8 +8,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import com.anilxpert.food.loopjServcice.Constant;
+import com.anilxpert.food.loopjServcice.ConstantField;
 
 /**
  * Created by AnilXpert 9887230800 on 11/21/2017.
@@ -44,7 +46,7 @@ public class Utils {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.setClass(context, class1);
-        intent.putExtra(Constant.INTENT_1, value);
+        intent.putExtra(ConstantField.INTENT_1, value);
         ((Activity) context).startActivity(intent);
     }
 
@@ -64,4 +66,24 @@ public class Utils {
         }
         return output;
     }
+
+    public static boolean getEditTextBool(EditText editText) {
+        if (editText.getText().toString().length() > 0) {
+            return true;
+
+        }
+        return false;
+    }
+
+    public static boolean getTextBool(TextView textview) {
+        if (textview.getText().toString().length() > 0) {
+            return true;
+
+        }
+        return false;
+    }
+    public static String getEditText(EditText editText) {
+        return editText.getText().toString().trim();
+    }
+
 }

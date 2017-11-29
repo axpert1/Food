@@ -1,17 +1,12 @@
 package com.anilxpert.food.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.anilxpert.food.R;
-import com.anilxpert.food.fragments.RegisterFragment;
-import com.anilxpert.food.fragments.SigninFragment;
-import com.anilxpert.food.loopjServcice.Constant;
-import com.anilxpert.food.utils.Utils;
 
 /**
  * Created by AnilXpert 9887230800 on 11/28/2017.

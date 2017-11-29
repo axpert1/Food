@@ -1,9 +1,10 @@
 package com.anilxpert.food.loopjServcice;
 
+
 import android.content.Context;
 import android.util.Log;
 
-import com.anilxpert.food.utils.Utils;
+import com.anilxpert.food.dilogs.DilogCustom;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.MySSLSocketFactory;
@@ -19,9 +20,7 @@ import java.security.cert.CertificateException;
 
 import cz.msebera.android.httpclient.Header;
 
-/**
- * Created by wingstud on 14-04-2017.
- */
+
 public class NetworkManager {
     private AsyncHttpClient client;
     private Context mContext;
@@ -35,7 +34,7 @@ public class NetworkManager {
     public void callAPI(Context context, String callType, String url, RequestParams params, String title, final onCallback callback, final boolean isShowLoader, final int which) {
         mContext = context;
         if (isShowLoader) {
-            // Utils.progressDialog(mContext, title);
+            DilogCustom.progressDialog(mContext, title);
         }
         client = new AsyncHttpClient();
         client.setTimeout(120000);
@@ -59,46 +58,47 @@ public class NetworkManager {
         } catch (KeyManagementException e) {
             e.printStackTrace();
         }
-        if (callType.equals(Constant.VAL_POST)) {
+        if (callType.equals(ConstantField.VAL_POST)) {
             client.post(url, params, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                     String res = String.valueOf(new String(response));
-                    Log.d("Responce", res);
+                    Log.e("Responce", " Success " + res);
                     callback.onSuccess(true, res, which);
                     if (isShowLoader) {
-                        //  Utilis_.dismissProgressDialog();
+                        DilogCustom.dismissProgressDialog();
                     }
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                    Log.e("Responce", " onFailure " );
                     callback.onFailure(false, "", which);
                     if (isShowLoader) {
-                        //Utilis_.dismissProgressDialog();
+                        DilogCustom.dismissProgressDialog();
                     }
                 }
 
 
             });
-        } else if (callType.equals(Constant.VAL_GET)) {
+        } else if (callType.equals(ConstantField.VAL_GET)) {
             client.get(url, params, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                     String res = String.valueOf(new String(response));
+                    Log.e("Responce", " Success " + res);
                     callback.onSuccess(true, res, which);
                     if (isShowLoader) {
-                        //  Utilis_.dismissProgressDialog();
+                        DilogCustom.dismissProgressDialog();
                     }
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                    Log.e("Responce", " onFailure " );
                     callback.onFailure(false, "", which);
                     if (isShowLoader) {
-                        //  Utilis_.dismissProgressDialog();
+                        DilogCustom.dismissProgressDialog();
                     }
                 }
             });

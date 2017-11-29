@@ -19,41 +19,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-1dp"
-                android:background="@drawable/bordrecolor"
-                android:paddingBottom="12dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="12dp">
+                android:background="@drawable/bordrecolor">
 
-                <EditText
+                <com.anilxpert.food.custom_class.EditTextViewRegular
+                    android:id="@+id/etxtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:hint="@string/email_address"
-                    android:maxLines="1" />
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:minHeight="@dimen/dp_40"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-1dp"
-                android:background="@drawable/bordrecolor"
-                android:paddingBottom="12dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="12dp">
+                android:background="@drawable/bordrecolor">
 
-                <EditText
+                <com.anilxpert.food.custom_class.EditTextViewRegular
+                    android:id="@+id/etxtPass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:hint="@string/password"
-                    android:maxLines="1" />
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:minHeight="@dimen/dp_40"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
             </LinearLayout>
 
 
             <com.anilxpert.food.custom_class.TextViewRegular
-                android:id="@+id/forget_tv"
+                android:id="@+id/txtForget"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -63,20 +65,16 @@
                 android:textAlignment="center"
                 android:textColor="@color/txtBlack" />
 
-            <com.anilxpert.food.custom_class.TextViewRegular
-                android:id="@+id/sign_in_tv"
+            <com.anilxpert.food.custom_class.RippleViewButton
+                android:id="@+id/btnSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="#DB3732"
-                android:gravity="center_horizontal"
-                android:paddingBottom="15dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="15dp"
-                android:text="Sign In"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
+                android:background="@color/btnRed"
+                android:gravity="center"
+                android:minHeight="@dimen/dp_40"
+                android:text="@string/str_sign_in"
+                android:textColor="@color/txtWhite" />
 
 
             <ImageView
@@ -87,19 +85,16 @@
                 android:src="@drawable/capture" />
 
 
-            <com.anilxpert.food.custom_class.TextViewRegular
-                android:id="@+id/fb_tv"
+            <com.anilxpert.food.custom_class.RippleViewButton
+                android:id="@+id/btnFacebook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#3b5998"
-                android:gravity="center_horizontal"
-                android:paddingBottom="15dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="15dp"
+                android:gravity="center"
+
+                android:minHeight="@dimen/dp_40"
                 android:text="Sign in with Facebook"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
+                android:textColor="@color/txtWhite" />
 
         </LinearLayout>
 

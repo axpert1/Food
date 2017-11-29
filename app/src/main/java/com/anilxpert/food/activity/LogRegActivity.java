@@ -1,20 +1,16 @@
 package com.anilxpert.food.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.anilxpert.food.R;
-import com.anilxpert.food.fragments.FaqFragment;
 import com.anilxpert.food.fragments.RegisterFragment;
 import com.anilxpert.food.fragments.SigninFragment;
-import com.anilxpert.food.fragments.TermsFragment;
-import com.anilxpert.food.loopjServcice.Constant;
+import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.utils.Utils;
 
 /**
@@ -30,7 +26,7 @@ public class LogRegActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_reg);
-        intentValue = Utils.getintentString(Constant.INTENT_1, getIntent());
+        intentValue = Utils.getintentString(ConstantField.INTENT_1, getIntent());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,7 +49,7 @@ public class LogRegActivity extends AppCompatActivity {
 
     }
 
-    private void setScreen(Fragment fragment) {
+    public void setScreen(Fragment fragment) {
         if (fragment != null) {
             Bundle bundle = new Bundle();
             fragment.setArguments(bundle);

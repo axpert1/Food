@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_16">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bordrecolor">
+
+        <com.anilxpert.food.custom_class.EditTextViewRegular
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:minHeight="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8" />
+    </LinearLayout>
+
+    <com.anilxpert.food.custom_class.RippleViewButton
+        android:id="@+id/btnResetPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/btnRed"
+        android:gravity="center"
+        android:minHeight="@dimen/dp_40"
+        android:text="@string/reset_password"
+        android:textColor="@color/txtWhite" />
+
+</LinearLayout>

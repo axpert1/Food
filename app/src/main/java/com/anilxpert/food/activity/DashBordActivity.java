@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ import com.anilxpert.food.fragments.MyOrderFragment;
 import com.anilxpert.food.fragments.PolicyFragment;
 import com.anilxpert.food.fragments.ProfileFragment;
 import com.anilxpert.food.fragments.TermsFragment;
+import com.anilxpert.food.loopjServcice.ConstantField;
+import com.anilxpert.food.utils.SharedPref;
 import com.anilxpert.food.utils.Utils;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -46,8 +49,9 @@ public class DashBordActivity extends AppCompatActivity
     private TextView faq;
     private TextView privacy_policy;
     private TextView terms_of_use;
-    private TextView sign_in;
-    private TextView register;
+    private Button sign_in;
+    private Button register;
+    private Button logout;
 
 
     //constant
@@ -59,6 +63,7 @@ public class DashBordActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
         initialize();
+        SharedPref.putboolSP(ConstantField.FIND_US, false);
     }
 
     private void initialize() {
@@ -80,8 +85,9 @@ public class DashBordActivity extends AppCompatActivity
 
         home = (TextView) findViewById(R.id.myprofile);
         myprofile = (TextView) findViewById(R.id.home);
-        register = (TextView) findViewById(R.id.register);
-        sign_in = (TextView) findViewById(R.id.sign_in);
+        register = (Button) findViewById(R.id.register);
+        sign_in = (Button) findViewById(R.id.sign_in);
+        logout = (Button) findViewById(R.id.logout);
         myorder = (TextView) findViewById(R.id.myorder);
         find = (TextView) findViewById(R.id.find);
         contect_us = (TextView) findViewById(R.id.contect_us);
@@ -101,6 +107,9 @@ public class DashBordActivity extends AppCompatActivity
 
         register.setOnClickListener(this);
         sign_in.setOnClickListener(this);
+        logout.setOnClickListener(this);
+
+        loginCheck();
 
 //
 //        fragment = new HomeFragment();
@@ -114,11 +123,10 @@ public class DashBordActivity extends AppCompatActivity
 
     private void gotoHomeScreen() {
         fragment = new HomeFragment();
-
         gotoNextScreen(fragment, getString(R.string.n_home));
     }
 
-    private void gotoNextScreen(Fragment fragment, String name) {
+    public void gotoNextScreen(Fragment fragment, String name) {
         if (fragment != null) {
             Bundle bundle = new Bundle();
             fragment.setArguments(bundle);
@@ -292,9 +300,28 @@ public class DashBordActivity extends AppCompatActivity
                 Utils.startActivityPutValue(DashBordActivity.this, LogRegActivity.class, getString(R.string.str_register));
 
                 break;
+            case R.id.logout:
+                drawerClose();
+                SharedPref.clearSp();
+                Utils.clearPriviousActivity(DashBordActivity.this, Splace.class);
+
+                break;
 
         }
         drawerClose();
+
+    }
+
+    private void loginCheck() {
+        if (SharedPref.getSP(ConstantField.USER_ID) == null) {
+            register.setVisibility(View.VISIBLE);
+            sign_in.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.GONE);
+        } else {
+            register.setVisibility(View.GONE);
+            sign_in.setVisibility(View.GONE);
+            logout.setVisibility(View.VISIBLE);
+        }
 
     }
 }

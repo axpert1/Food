@@ -19,7 +19,7 @@ public class SharedPref {
     }
 
     public static String getSP(String Key) {
-        return mPref.getString(Key, "");
+        return mPref.getString(Key, null);
     }
 
     public static int getintSP(String Key) {

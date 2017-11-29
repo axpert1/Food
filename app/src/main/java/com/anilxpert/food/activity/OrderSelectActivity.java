@@ -17,10 +17,7 @@ import com.anilxpert.food.R;
 import com.anilxpert.food.custom_class.CustomViewPager;
 import com.anilxpert.food.fragments.DryShopFragment;
 import com.anilxpert.food.fragments.MalaFragment;
-import com.anilxpert.food.fragments.RegisterFragment;
-import com.anilxpert.food.fragments.SigninFragment;
 import com.anilxpert.food.fragments.SpicinessFragment;
-import com.anilxpert.food.loopjServcice.Constant;
 import com.anilxpert.food.utils.Utils;
 
 import java.util.ArrayList;

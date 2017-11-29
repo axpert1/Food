@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Xiao Man Niu</string>
+    <string name="app_id">748389988623123</string>
 
 
     <!--login-->
@@ -33,6 +34,7 @@
     <string name="n_contact_us"> Contact Us </string>
     <string name="n_sign_in"> Sign In </string>
     <string name="n_register"> Register </string>
+    <string name="n_logout"> Logout </string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="mobile_no">Mobile Number</string>
@@ -44,4 +46,18 @@
     <string name="spiceness_level">Spiceness level</string>
     <string name="dry_shop">Dry or Soup</string>
     <string name="mala">Mala Xiang Guo</string>
+
+    <!--error-->
+    <string name="cancel">Cancel</string>
+    <string name="msg_email_empty"> Email should not be empty</string>
+    <string name="msg_enter_valid_email"> Enter valid email </string>
+    <string name="msg_invalid_email"> Email and password should not be empty</string>
+    <string name="msg_pass_length"> Password must be at least 6 characters long. Please try again.</string>
+    <string name="please_wait">Please wait...</string>
+
+
+    <string name="reset_password">Reset Password</string>
+    <string name="name">Name</string>
+    <string name="submit">Submit</string>
+    <string name="message">Comment</string>
 </resources>
