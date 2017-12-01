@@ -4,11 +4,11 @@
     android:shape="rectangle">
     <solid android:color="@color/btnRed" />
     <corners
-        android:bottomLeftRadius="0dp"
-        android:bottomRightRadius="0dp"
-        android:topLeftRadius="0dp"
-        android:topRightRadius="0dp" />
+        android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp" />
     <stroke
         android:width="1dip"
-        android:color="@color/colorWhite" />
+        android:color="@color/btnRed" />
 </shape>

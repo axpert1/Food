@@ -63,7 +63,13 @@ public class DashBordActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
         initialize();
-        SharedPref.putboolSP(ConstantField.FIND_US, false);
+        clearSP();
+    }
+
+    public void clearSP() {
+        SharedPref.removeSP(ConstantField.FIND_US);
+        SharedPref.removeSP(ConstantField.DATE);
+        SharedPref.removeSP(ConstantField.TIME);
     }
 
     private void initialize() {

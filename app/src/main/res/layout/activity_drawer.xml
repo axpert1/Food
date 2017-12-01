@@ -38,7 +38,7 @@
                 android:padding="10dp"
                 android:text="@string/n_home"
                 android:textColor="@color/txtWhite"
-                android:textSize="@dimen/sp_20" />
+                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.TextViewRegular
                 android:id="@+id/myprofile"
@@ -48,7 +48,7 @@
                 android:padding="10dp"
                 android:text="@string/n_my_profile"
                 android:textColor="@color/txtWhite"
-                android:textSize="@dimen/sp_20" />
+                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.TextViewRegular
                 android:id="@+id/myorder"
@@ -57,7 +57,7 @@
                 android:padding="10dp"
                 android:text="@string/n_my_orders"
                 android:textColor="#ffffff"
-                android:textSize="20dp" />
+                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.TextViewRegular
                 android:id="@+id/find"
@@ -66,7 +66,7 @@
                 android:padding="10dp"
                 android:text="@string/n_find_us"
                 android:textColor="#ffffff"
-                android:textSize="20dp" />
+                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.TextViewRegular
                 android:id="@+id/faq"
@@ -75,7 +75,7 @@
                 android:padding="10dp"
                 android:text="@string/n_faq"
                 android:textColor="#ffffff"
-                android:textSize="20dp" />
+                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.TextViewRegular
                 android:id="@+id/terms_of_use"
@@ -84,7 +84,7 @@
                 android:padding="10dp"
                 android:text="@string/n_terms_of_use"
                 android:textColor="#ffffff"
-                android:textSize="20dp" />
+                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.TextViewRegular
                 android:id="@+id/privacu_policy"
@@ -93,7 +93,7 @@
                 android:padding="10dp"
                 android:text="@string/n_privacy_policy"
                 android:textColor="#ffffff"
-                android:textSize="20dp" />
+                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.TextViewRegular
                 android:id="@+id/contect_us"
@@ -102,7 +102,7 @@
                 android:padding="10dp"
                 android:text="@string/n_contact_us"
                 android:textColor="#ffffff"
-                android:textSize="20dp" />
+                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.RippleViewButton
                 android:id="@+id/sign_in"

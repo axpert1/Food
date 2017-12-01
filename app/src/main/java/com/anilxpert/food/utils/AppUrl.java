@@ -12,10 +12,20 @@ public class AppUrl {
 
 
     public static String ADD_USER = BASE_URL + USER_CONTROLLER + "add_user" + TOKEN;
+
     public static String LOG_IN = BASE_URL + USER_CONTROLLER + "login" + TOKEN;
+
     public static String CHANGE_PASSWORD = BASE_URL + USER_CONTROLLER + "change_password" + TOKEN;
+
     public static String FORGOT_PASSWORD = BASE_URL + USER_CONTROLLER + "forgot_password" + TOKEN;
+
     public static String LOG_OUT = BASE_URL + USER_CONTROLLER + "logout" + TOKEN;
+
     public static String GET_USER_PROFILE = BASE_URL + USER_CONTROLLER + "get_user_profile" + TOKEN;
+
     public static String CONTACT_US = BASE_URL + USER_CONTROLLER + "contact_us" + TOKEN;
+
+    public static String GET_PRODUCTS = BASE_URL + USER_CONTROLLER + "get_products" + TOKEN;
+
+    public static String GET_LOCATIONS = BASE_URL + USER_CONTROLLER + "get_locations" + TOKEN;
 }

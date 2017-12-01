@@ -149,7 +149,6 @@
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
-                    android:text="hello"
                     android:textColor="@color/txtBlack" />
 
             </LinearLayout>

@@ -32,7 +32,54 @@ public class Utils {
         ft.commit();
 
     }
+    public static String getDateWithFormat(int day, int month, int year) {
 
+        String dateFormat = String.valueOf(new StringBuilder().append(day).append("-")
+                .append(getMonthName(month)).append("-").append(year));
+
+        return dateFormat;
+    }
+    public static String getMonthName(int month) {
+        switch (month) {
+            case 1:
+                return "Jan";
+
+            case 2:
+                return "Feb";
+
+            case 3:
+                return "Mar";
+
+            case 4:
+                return "Apr";
+
+            case 5:
+                return "May";
+
+            case 6:
+                return "Jun";
+
+            case 7:
+                return "Jul";
+
+            case 8:
+                return "Aug";
+
+            case 9:
+                return "Sep";
+
+            case 10:
+                return "Oct";
+
+            case 11:
+                return "Nov";
+
+            case 12:
+                return "Dec";
+        }
+
+        return "";
+    }
     //to start any activity.
     public static void startActivity(Context context, Class<?> class1) {
         Intent intent = new Intent();

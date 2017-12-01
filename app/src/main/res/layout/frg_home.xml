@@ -81,7 +81,7 @@
 
 
                         <com.anilxpert.food.custom_class.TextViewRegular
-                            android:id="@+id/today"
+                            android:id="@+id/txtDate"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_gravity="center"
@@ -103,13 +103,14 @@
                         android:layout_weight="0.5"
                         android:weightSum="1">
 
-                        <Spinner
-                            android:id="@+id/time"
+                        <com.anilxpert.food.custom_class.TextViewRegular
+                            android:id="@+id/txtTime"
                             style="@style/SpinnerTheme"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_gravity="center"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:text="Setect Time" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -135,7 +136,7 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:id="@+id/close"
+                        android:id="@+id/imgClose"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -160,41 +161,21 @@
                             android:textSize="@dimen/sp_14" />
 
                         <com.anilxpert.food.custom_class.TextViewRegular
-                            android:id="@+id/main_et2"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtAddress"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
-                            android:enabled="false"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_10"
+                            android:layout_marginTop="@dimen/dp_10"
                             android:gravity="center"
-                            android:padding="4dp"
-                            android:text="930 Yishun Avenue 2"
+
+
                             android:textColor="@color/txtBlack"
 
                             android:textSize="@dimen/sp_14" />
 
-                        <com.anilxpert.food.custom_class.TextViewRegular
-                            android:id="@+id/main_et3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:gravity="center"
-                            android:padding="4dp"
-                            android:text="#03*47/51 Northpoint Shopping Center"
-                            android:textColor="@color/txtBlack"
 
-                            android:textSize="@dimen/sp_14" />
-
-                        <com.anilxpert.food.custom_class.TextViewRegular
-                            android:id="@+id/main_et4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#00000000"
-                            android:enabled="false"
-                            android:gravity="center"
-                            android:padding="4dp"
-                            android:text="Singapore 769098"
-                            android:textColor="@color/txtBlack"
-                            android:textSize="@dimen/sp_14" />
                     </LinearLayout>
 
                 </RelativeLayout>

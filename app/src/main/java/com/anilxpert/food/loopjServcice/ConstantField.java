@@ -32,6 +32,12 @@ public class ConstantField {
     public static String USER_EMAIL = "user_email";
     public static String USER_MOBILE = "user_mobile";
     public static String FIND_US = "find_us";
+    public static String SELECTION_DATA = "selection_data";
+
+    public static String ADDRESS_NAME = "address_name";
+    public static String DATE = "date";
+    public static String TIME = "time";
+
 
 
 }

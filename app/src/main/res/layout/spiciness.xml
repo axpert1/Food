@@ -19,8 +19,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
-                android:padding="10dp"
-                 />
+                android:padding="10dp" />
 
             <LinearLayout
                 android:id="@+id/liner1_one"
@@ -39,71 +38,75 @@
 
         </RelativeLayout>
 
-
-        <RadioGroup
-            android:id="@+id/radio_layout"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerSpicess"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_tab"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+        <!--<RadioGroup-->
+        <!--android:id="@+id/radio_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/relative_tab"-->
+        <!--android:orientation="vertical">-->
 
-            <RadioButton
-                android:id="@+id/radio_btn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:background="@drawable/bordrecolor"
-                android:button="@drawable/check_selector"
-                android:layoutDirection="rtl"
-                android:padding="15dp"
-                android:text="Mild Spicy"
-                android:textAlignment="textStart"
-                android:textSize="15dp" />
+        <!--<RadioButton-->
+        <!--android:id="@+id/radio_btn1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:background="@drawable/bordrecolor"-->
+        <!--android:button="@drawable/check_selector"-->
+        <!--android:layoutDirection="rtl"-->
+        <!--android:padding="15dp"-->
+        <!--android:text="Mild Spicy"-->
+        <!--android:textAlignment="textStart"-->
+        <!--android:textSize="15dp" />-->
 
 
-            <RadioButton
-                android:id="@+id/radio_btn2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="-1dp"
-                android:background="@drawable/bordrecolor"
-                android:button="@drawable/check_selector"
-                android:layoutDirection="rtl"
-                android:padding="15dp"
-                android:text="Spicy"
-                android:textAlignment="textStart"
-                android:textSize="15dp" />
+        <!--<RadioButton-->
+        <!--android:id="@+id/radio_btn2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:layout_marginTop="-1dp"-->
+        <!--android:background="@drawable/bordrecolor"-->
+        <!--android:button="@drawable/check_selector"-->
+        <!--android:layoutDirection="rtl"-->
+        <!--android:padding="15dp"-->
+        <!--android:text="Spicy"-->
+        <!--android:textAlignment="textStart"-->
+        <!--android:textSize="15dp" />-->
 
-            <RadioButton
-                android:id="@+id/radio_btn3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="-1dp"
-                android:background="@drawable/bordrecolor"
-                android:button="@drawable/check_selector"
-                android:layoutDirection="rtl"
-                android:padding="15dp"
-                android:text="Fiery Spicy"
-                android:textAlignment="textStart"
-                android:textSize="15dp" />
+        <!--<RadioButton-->
+        <!--android:id="@+id/radio_btn3"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:layout_marginTop="-1dp"-->
+        <!--android:background="@drawable/bordrecolor"-->
+        <!--android:button="@drawable/check_selector"-->
+        <!--android:layoutDirection="rtl"-->
+        <!--android:padding="15dp"-->
+        <!--android:text="Fiery Spicy"-->
+        <!--android:textAlignment="textStart"-->
+        <!--android:textSize="15dp" />-->
 
-            <RadioButton
-                android:id="@+id/radio_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="-1dp"
-                android:background="@drawable/bordrecolor"
-                android:button="@drawable/check_selector"
-                android:layoutDirection="rtl"
-                android:padding="15dp"
-                android:text="No Spicy"
-                android:textAlignment="textStart"
-                android:textSize="15dp" />
+        <!--<RadioButton-->
+        <!--android:id="@+id/radio_btn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:layout_marginTop="-1dp"-->
+        <!--android:background="@drawable/bordrecolor"-->
+        <!--android:button="@drawable/check_selector"-->
+        <!--android:layoutDirection="rtl"-->
+        <!--android:padding="15dp"-->
+        <!--android:text="No Spicy"-->
+        <!--android:textAlignment="textStart"-->
+        <!--android:textSize="15dp" />-->
 
-        </RadioGroup>
+        <!--</RadioGroup>-->
 
     </LinearLayout>
 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/liner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/bordrecolor"
+        android:orientation="vertical">
+
+        <com.anilxpert.food.custom_class.TextViewRegularBold
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DB3732"
+            android:gravity="center"
+            android:minHeight="@dimen/dp_40"
+            android:textColor="@color/txtWhite"
+            android:textSize="@dimen/sp_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/txtAddressLineOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="10 Tempines 1,#05-05"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/txtOpen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_5"
+                android:gravity="center"
+                android:text="Mon - Sun : 11am - 11pm"
+                android:textColor="@color/txtBlack"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

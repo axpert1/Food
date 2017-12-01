@@ -21,242 +21,247 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                android:paddingBottom="25dp"
+
+
                 android:orientation="vertical">
 
-
-                <LinearLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerFindUs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/liner1"
-                    android:background="@drawable/bordrecolor"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical" />
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/liner1"-->
+                <!---->
+                <!--android:background="@drawable/bordrecolor"-->
+                <!--android:orientation="vertical">-->
 
-                    <TextView
-                        android:id="@+id/temp_one_et"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#DB3732"
-                        android:padding="8dp"
-                        android:textSize="18dp"
-                        android:text="Tempines One"
-                        android:textAlignment="center"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
+                <!--<TextView-->
+                <!--android:id="@+id/temp_one_et"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#DB3732"-->
+                <!--android:padding="8dp"-->
+                <!--android:textSize="18dp"-->
+                <!--android:text="Tempines One"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textStyle="bold" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="10dp">-->
 
-                        <EditText
-                            android:id="@+id/et_one"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#00000000"
-                            android:enabled="false"
-                            android:text="10 Tempines 1,#05-05"
-                            android:textColor="#000"
-                            android:textSize="14dp" />
+                <!--<EditText-->
+                <!--android:id="@+id/et_one"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#00000000"-->
+                <!--android:enabled="false"-->
+                <!--android:text="10 Tempines 1,#05-05"-->
+                <!--android:textColor="#000"-->
+                <!--android:textSize="14dp" />-->
 
-                        <EditText
-                            android:id="@+id/et_two"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#00000000"
-                            android:enabled="false"
-                            android:text="Singapore 529536"
-                            android:textColor="#000"
-                            android:textSize="14dp" />
+                <!--<EditText-->
+                <!--android:id="@+id/et_two"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#00000000"-->
+                <!--android:enabled="false"-->
+                <!--android:text="Singapore 529536"-->
+                <!--android:textColor="#000"-->
+                <!--android:textSize="14dp" />-->
 
-                        <EditText
-                            android:id="@+id/et_three"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#00000000"
-                            android:enabled="false"
-                            android:padding="4dp"
-                            android:text="Mon - Sun : 11am - 11pm"
-                            android:textColor="#000"
-                            android:textSize="14dp" />
-                    </LinearLayout>
+                <!--<EditText-->
+                <!--android:id="@+id/et_three"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#00000000"-->
+                <!--android:enabled="false"-->
+                <!--android:padding="4dp"-->
+                <!--android:text="Mon - Sun : 11am - 11pm"-->
+                <!--android:textColor="#000"-->
+                <!--android:textSize="14dp" />-->
+                <!--</LinearLayout>-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:id="@+id/liner2"
-                    android:background="@drawable/bordrecolor"
-                    android:orientation="vertical">
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:id="@+id/liner2"-->
+                <!--android:background="@drawable/bordrecolor"-->
+                <!--android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#888"
-                        android:padding="8dp"
-                        android:textSize="18dp"
-                        android:id="@+id/temp_one_et2"
-                        android:text="Tempines One"
-                        android:textAlignment="center"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#888"-->
+                <!--android:padding="8dp"-->
+                <!--android:textSize="18dp"-->
+                <!--android:id="@+id/temp_one_et2"-->
+                <!--android:text="Tempines One"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textStyle="bold" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="10dp">-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:enabled="false"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:layout_height="wrap_content"
-                            android:text="10 Tempines 1,#05-05"
-                            android:textColor="#000" />
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:enabled="false"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="10 Tempines 1,#05-05"-->
+                <!--android:textColor="#000" />-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Singapore 529536"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:enabled="false"
-                            android:textColor="#000" />
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Singapore 529536"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:enabled="false"-->
+                <!--android:textColor="#000" />-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="4dp"
-                            android:enabled="false"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:text="Mon - Sun : 11am - 11pm"
-                            android:textColor="#000" />
-                    </LinearLayout>
-                </LinearLayout>
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:padding="4dp"-->
+                <!--android:enabled="false"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:text="Mon - Sun : 11am - 11pm"-->
+                <!--android:textColor="#000" />-->
+                <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:id="@+id/liner3"
-                    android:background="@drawable/bordrecolor"
-                    android:orientation="vertical">
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:id="@+id/liner3"-->
+                <!--android:background="@drawable/bordrecolor"-->
+                <!--android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#888"
-                        android:padding="8dp"
-                        android:textSize="18dp"
-                        android:id="@+id/temp_one_et3"
-                        android:text="Tempines One"
-                        android:textAlignment="center"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#888"-->
+                <!--android:padding="8dp"-->
+                <!--android:textSize="18dp"-->
+                <!--android:id="@+id/temp_one_et3"-->
+                <!--android:text="Tempines One"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textStyle="bold" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="10dp">-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:enabled="false"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:layout_height="wrap_content"
-                            android:text="10 Tempines 1,#05-05"
-                            android:textColor="#000" />
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:enabled="false"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="10 Tempines 1,#05-05"-->
+                <!--android:textColor="#000" />-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Singapore 529536"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:enabled="false"
-                            android:textColor="#000" />
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Singapore 529536"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:enabled="false"-->
+                <!--android:textColor="#000" />-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="4dp"
-                            android:enabled="false"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:text="Mon - Sun : 11am - 11pm"
-                            android:textColor="#000" />
-                    </LinearLayout>
-                </LinearLayout>
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:padding="4dp"-->
+                <!--android:enabled="false"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:text="Mon - Sun : 11am - 11pm"-->
+                <!--android:textColor="#000" />-->
+                <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:id="@+id/liner4"
-                    android:background="@drawable/bordrecolor"
-                    android:orientation="vertical">
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:id="@+id/liner4"-->
+                <!--android:background="@drawable/bordrecolor"-->
+                <!--android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#888"
-                        android:padding="8dp"
-                        android:textSize="18dp"
-                        android:text="Tempines One"
-                        android:id="@+id/temp_one_et4"
-                        android:textAlignment="center"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#888"-->
+                <!--android:padding="8dp"-->
+                <!--android:textSize="18dp"-->
+                <!--android:text="Tempines One"-->
+                <!--android:id="@+id/temp_one_et4"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textStyle="bold" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="10dp">-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:enabled="false"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:layout_height="wrap_content"
-                            android:text="10 Tempines 1,#05-05"
-                            android:textColor="#000" />
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:enabled="false"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="10 Tempines 1,#05-05"-->
+                <!--android:textColor="#000" />-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Singapore 529536"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:enabled="false"
-                            android:textColor="#000" />
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Singapore 529536"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:enabled="false"-->
+                <!--android:textColor="#000" />-->
 
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="4dp"
-                            android:enabled="false"
-                            android:background="#00000000"
-                            android:textSize="14dp"
-                            android:text="Mon - Sun : 11am - 11pm"
-                            android:textColor="#000" />
-                    </LinearLayout>
-                </LinearLayout>
+                <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:padding="4dp"-->
+                <!--android:enabled="false"-->
+                <!--android:background="#00000000"-->
+                <!--android:textSize="14dp"-->
+                <!--android:text="Mon - Sun : 11am - 11pm"-->
+                <!--android:textColor="#000" />-->
+                <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
                 <!--  <LinearLayout
                       android:layout_width="match_parent"
