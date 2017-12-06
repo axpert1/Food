@@ -48,7 +48,13 @@ public class ContectUsFragment extends Fragment implements View.OnClickListener,
         mContext = getActivity();
         dilogCustom = new DilogCustom();
         initialize();
-
+        retryClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dilogCustom.dismissRetryAlert();
+                ((DashBordActivity) getActivity()).gotoNextScreen(new HomeFragment(), mContext.getString(R.string.n_find_us));
+            }
+        };
         return view;
     }
 
@@ -86,8 +92,7 @@ public class ContectUsFragment extends Fragment implements View.OnClickListener,
     public void onSuccess(boolean success, String response, int which) {
         Log.e("Responce", " Success " + response);
         CommonModel commonModel = JsonDeserializer.deserializeJson(response, CommonModel.class);
-
-        dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), commonModel.message, getString(R.string.cancel), "", this);
+        dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), commonModel.message, "", getString(R.string.ok), retryClick);
 
 
     }

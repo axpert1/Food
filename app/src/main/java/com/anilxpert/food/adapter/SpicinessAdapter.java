@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.anilxpert.food.R;
@@ -22,11 +23,13 @@ public class SpicinessAdapter extends RecyclerView.Adapter<SpicinessAdapter.MyVi
     private Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtName, year, genre;
+        public TextView txtName;
+        public CheckBox checkboxSelect;
 
         public MyViewHolder(View view) {
             super(view);
             txtName = (TextView) view.findViewById(R.id.txtName);
+            checkboxSelect = (CheckBox) view.findViewById(R.id.checkboxSelect);
 
         }
     }
@@ -46,9 +49,25 @@ public class SpicinessAdapter extends RecyclerView.Adapter<SpicinessAdapter.MyVi
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        OrderSelectModel.SpicinessLevel spicinessLevel = spicinessLevelList.get(position);
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        final OrderSelectModel.SpicinessLevel spicinessLevel = spicinessLevelList.get(position);
         holder.txtName.setText(spicinessLevel.productName);
+        holder.txtName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setCheck();
+                spicinessLevelList.get(position).selectItme = true;
+                notifyDataSetChanged();
+            }
+        });
+        holder.checkboxSelect.setChecked(spicinessLevel.selectItme);
+
+    }
+
+    public void setCheck() {
+        for (int i = 0; spicinessLevelList.size() > i; i++) {
+            spicinessLevelList.get(i).selectItme = false;
+        }
 
     }
 

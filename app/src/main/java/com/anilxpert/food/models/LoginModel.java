@@ -11,12 +11,13 @@ public class LoginModel {
     @SerializedName("status")
     @Expose
     public Integer status;
-    @SerializedName("msg")
+    @SerializedName("message")
     @Expose
-    public String msg;
+    public String message;
     @SerializedName("user_details")
     @Expose
     public UserDetails userDetails;
+
     public class UserDetails {
 
         @SerializedName("password")
@@ -25,9 +26,9 @@ public class LoginModel {
         @SerializedName("email")
         @Expose
         public String email;
-        @SerializedName("username")
+        @SerializedName("user_id")
         @Expose
-        public String username;
+        public String userId;
         @SerializedName("mobile")
         @Expose
         public String mobile;

@@ -28,4 +28,6 @@ public class AppUrl {
     public static String GET_PRODUCTS = BASE_URL + USER_CONTROLLER + "get_products" + TOKEN;
 
     public static String GET_LOCATIONS = BASE_URL + USER_CONTROLLER + "get_locations" + TOKEN;
+
+    public static String ADD_USER_FB = BASE_URL + USER_CONTROLLER + "add_user_fb" + TOKEN;
 }

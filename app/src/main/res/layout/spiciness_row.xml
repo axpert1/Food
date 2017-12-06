@@ -2,17 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <com.anilxpert.food.custom_class.TextViewRegular
         android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center|left"
         android:minHeight="@dimen/dp_40"
         android:paddingLeft="@dimen/dp_20"
         android:paddingRight="@dimen/dp_20"
         android:text="Helllo"
         android:textColor="@color/bgBlack" />
+
+    <CheckBox
+        android:id="@+id/checkboxSelect"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="match_parent"
+        android:button="@drawable/checkbox_button"
+        android:layout_gravity="center" />
 
 </LinearLayout>

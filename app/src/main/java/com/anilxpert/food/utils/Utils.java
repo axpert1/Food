@@ -3,22 +3,59 @@ package com.anilxpert.food.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.anilxpert.food.loopjServcice.ConstantField;
+import com.facebook.login.LoginManager;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by AnilXpert 9887230800 on 11/21/2017.
  */
 
 public class Utils {
+    // TODO: 10/23/2017   Logout facebook
+    public static void logoutFacebook(Context c) {
+        LoginManager.getInstance().logOut();
+        // Toast.makeText(c, "logout", Toast.LENGTH_SHORT).show();
+    }
 
+    // TODO: 10/23/2017   KeyHash
+    public static void gethashKey(Context context) {
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(
+                    "com.anilxpert.food",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d("KeyHash:", e.toString());
+
+        } catch (NoSuchAlgorithmException e) {
+            Log.d("KeyHash:", "NoSuchAlgorithmException");
+
+        }
+    }
 
     public static void replaceFrg(FragmentActivity ctx, Fragment frag, boolean addToBackStack, int placeHolderId) {
         FragmentManager fm = ctx.getSupportFragmentManager();
@@ -32,6 +69,7 @@ public class Utils {
         ft.commit();
 
     }
+
     public static String getDateWithFormat(int day, int month, int year) {
 
         String dateFormat = String.valueOf(new StringBuilder().append(day).append("-")
@@ -39,6 +77,7 @@ public class Utils {
 
         return dateFormat;
     }
+
     public static String getMonthName(int month) {
         switch (month) {
             case 1:
@@ -80,6 +119,15 @@ public class Utils {
 
         return "";
     }
+
+    public static String getCurrentDate() {
+
+
+        DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
     //to start any activity.
     public static void startActivity(Context context, Class<?> class1) {
         Intent intent = new Intent();
@@ -129,6 +177,7 @@ public class Utils {
         }
         return false;
     }
+
     public static String getEditText(EditText editText) {
         return editText.getText().toString().trim();
     }

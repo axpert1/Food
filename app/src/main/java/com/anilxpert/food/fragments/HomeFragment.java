@@ -6,10 +6,12 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import android.app.Dialog;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.anilxpert.food.R;
 import com.anilxpert.food.activity.DashBordActivity;
@@ -35,8 +38,11 @@ import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -67,7 +73,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
     private String format = "";
     private String date = null;
     private String time = null;
-
+    private int timeHH;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,12 +86,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
         View view = inflater.inflate(R.layout.frg_home, container, false);
         mContext = getActivity();
         dilogCustom = new DilogCustom();
-
+        Calendar calander = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH");
+        timeHH = Integer.parseInt(simpleDateFormat.format(calander.getTime()));
 
         Calendar c = Calendar.getInstance();
         hour = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
 
+        int h = Calendar.getInstance().get(Calendar.HOUR);
 
         slidingImage(getList(), view);
         selectOutlet = (TextView) view.findViewById(R.id.select_outlet);
@@ -94,7 +103,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
         txtTime = (TextView) view.findViewById(R.id.txtTime);
 
         txtAddress = (TextView) view.findViewById(R.id.txtAddress);
-
         imgClose = (ImageView) view.findViewById(R.id.imgClose);
 
         selectOutlet = (TextView) view.findViewById(R.id.select_outlet);
@@ -134,7 +142,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
         list.add("http://thesmartlocal.com/images/easyblog_images/2088/Burger-Grp-Shot_4601.jpg");
         list.add("http://thesmartlocal.com/images/easyblog_images/2088/Burger-Grp-Shot_4601.jpg");
         list.add("http://thesmartlocal.com/images/easyblog_images/2088/Burger-Grp-Shot_4601.jpg");
-
         return list;
     }
 
@@ -148,7 +155,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
                     .description(null)
                     .image(datums.get(i))
                     .setScaleType(BaseSliderView.ScaleType.Fit);
-
             //add your extra information
             textSliderView.bundle(new Bundle());
             //    textSliderView.setOnSliderClickListener(this);
@@ -207,16 +213,38 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
                     dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "Select date", getString(R.string.cancel), "", this);
 
                 } else {
-                    java.util.Calendar time = java.util.Calendar.getInstance();
-                    TimePickerDialog ttp = TimePickerDialog.newInstance(
-                            this,
-                            time.get(java.util.Calendar.HOUR_OF_DAY),
-                            time.get(java.util.Calendar.MINUTE),
-                            false
-                    );
-                    //ttp.setMinDate(now);
-                    ttp.setAccentColor(Color.parseColor("#ff5103"));
-                    ttp.show(getActivity().getFragmentManager(), "Time");
+
+//
+                    Calendar today = Calendar.getInstance();
+                    int month = today.get(Calendar.MONTH) + 1;
+                    int year = today.get(Calendar.YEAR);
+                    int dates = today.get(Calendar.DAY_OF_MONTH);
+                    //  Toast.makeText(mContext, "" + dates + "-" + month + "-" + year, Toast.LENGTH_SHORT).show();
+
+                    if (date.equals(Utils.getDateWithFormat(dates, month, year))) {
+//                    final CharSequence[] items = {"11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm"};
+                        if (timeHH > 10 || timeHH < 21) {
+                            alerts(listItems().toArray(new CharSequence[listItems().size()]));
+                        }
+//                        else {
+//                            dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "Select vlaid date", getString(R.string.cancel), "", this);
+//
+//                        }
+
+                    } else {
+                        alerts(listItemsAllday().toArray(new CharSequence[listItemsAllday().size()]));
+
+                    }
+//                    java.util.Calendar time = java.util.Calendar.getInstance();
+//                    TimePickerDialog ttp = TimePickerDialog.newInstance(
+//                            this,
+//                            time.get(java.util.Calendar.HOUR_OF_DAY),
+//                            time.get(java.util.Calendar.MINUTE),
+//                            false
+//                    );
+//                    //ttp.setMinDate(now);
+//                    ttp.setAccentColor(Color.parseColor("#ff5103"));
+//                    ttp.show(getActivity().getFragmentManager(), "Time");
                 }
 
 
@@ -269,5 +297,83 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
         time = showTime(selectedHour, selectedMinute);
         SharedPref.putSP(ConstantField.TIME, time);
 
+    }
+
+    private List<String> listItems() {
+        List<String> listItems = new ArrayList<String>();
+        //"11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm"
+        //  int h = Calendar.getInstance().get(Calendar.HOUR);
+
+
+        if (timeHH > 10 || timeHH < 21) {
+            for (int i = timeHH; i < 20; i++) {
+                int timeXXX = i + 1;
+                switch (timeXXX) {
+                    case 11:
+                        listItems.add("11:00 am");
+                        break;
+                    case 12:
+                        listItems.add("12:00 pm");
+                        break;
+                    case 13:
+                        listItems.add("1:00 pm");
+                        break;
+                    case 14:
+                        listItems.add("2:00 pm");
+                        break;
+                    case 15:
+                        listItems.add("3:00 pm");
+                        break;
+                    case 16:
+                        listItems.add("4:00 pm");
+                        break;
+                    case 17:
+                        listItems.add("5:00 pm");
+                        break;
+                    case 18:
+                        listItems.add("6:00 pm");
+                        break;
+                    case 19:
+                        listItems.add("7:00 pm");
+                        break;
+                }
+            }
+        }
+
+
+        return listItems;
+        // final CharSequence[] charSequenceItems = listItems.toArray(new CharSequence[listItems.size()]);
+    }
+
+    private List<String> listItemsAllday() {
+        List<String> listItems = new ArrayList<String>();
+        listItems.add("11:00 am");
+        listItems.add("12:00 pm");
+        listItems.add("1:00 pm");
+        listItems.add("2:00 pm");
+        listItems.add("3:00 pm");
+        listItems.add("4:00 pm");
+        listItems.add("5:00 pm");
+        listItems.add("6:00 pm");
+        listItems.add("7:00 pm");
+        return listItems;
+
+
+    }
+
+    private void alerts(final CharSequence[] items) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Select time");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                // Do something with the selection
+                txtTime.setText(items[item]);
+                time = "" + items[item];
+                SharedPref.putSP(ConstantField.TIME, "" + items[item]);
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

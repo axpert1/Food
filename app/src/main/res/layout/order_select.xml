@@ -16,8 +16,10 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabBackground="@drawable/tab_color"
         app:tabGravity="fill"
-        app:tabMode="fixed" />
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/colorWhite" />
 
     <com.anilxpert.food.custom_class.CustomViewPager
         android:id="@+id/viewpager"

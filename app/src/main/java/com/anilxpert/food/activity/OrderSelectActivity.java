@@ -12,8 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.anilxpert.food.R;
 import com.anilxpert.food.custom_class.CustomViewPager;
@@ -43,6 +46,9 @@ import static android.R.attr.type;
 
 public class OrderSelectActivity extends AppCompatActivity implements NetworkManager.onCallback, View.OnClickListener {
     private TextView activity_title;
+    private TextView tabOne;
+    private TextView tabTwo;
+    private TextView tabThree;
     private Toolbar toolbar;
     private Context mContext;
     private String responce = null;
@@ -92,7 +98,6 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
         viewPager = (CustomViewPager) findViewById(R.id.viewpager);
         viewPager.setPagingEnabled(false);
         setupViewPager(viewPager);
-
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
@@ -123,17 +128,51 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
     }
 
     private void setupTabIcons() {
-        TextView tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabOne.setText(getString(R.string.spiceness_level));
         tabLayout.getTabAt(0).setCustomView(tabOne);
 
-        TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabTwo.setText(getString(R.string.dry_shop));
         tabLayout.getTabAt(1).setCustomView(tabTwo);
 
-        TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabThree.setText(getString(R.string.mala));
         tabLayout.getTabAt(2).setCustomView(tabThree);
+        // TODO: 12/1/2017  Tab click disable 
+//        LinearLayout tabStrip = ((LinearLayout) tabLayout.getChildAt(0));
+//        for (int i = 0; i < tabStrip.getChildCount(); i++) {
+//            tabStrip.getChildAt(i).setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    return true;
+//                }
+//            });
+//
+//        }
+        selectTab(tabOne, tabTwo, tabThree);
+        tabLayout.setOnTabSelectedListener(
+                new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
+
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        super.onTabSelected(tab);
+                        getSelectTab(tab.getText().toString());
+                    }
+
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+                        super.onTabUnselected(tab);
+
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+                        super.onTabReselected(tab);
+
+                    }
+                }
+        );
     }
 
     private int getItem(int i) {
@@ -142,6 +181,27 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
 
     @Override
     public void onClick(View view) {
+
+    }
+
+    private void getSelectTab(String tabName) {
+        switch (tabName) {
+            case "Spiceness level":
+                selectTab(tabOne, tabTwo, tabThree);
+                break;
+            case "Dry or Soup":
+                selectTab(tabTwo, tabOne, tabThree);
+                break;
+            case "Mala Xiang Guo":
+                selectTab(tabThree, tabOne, tabTwo);
+                break;
+        }
+    }
+
+    private void selectTab(TextView selected, TextView a, TextView b) {
+  selected.setTextColor(getResources().getColor(R.color.txtWhite));
+        a.setTextColor(getResources().getColor(R.color.txtBlack));
+        b.setTextColor(getResources().getColor(R.color.txtBlack));
 
     }
 
@@ -245,7 +305,7 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
             } else {
                 this.callbackMala = callback;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         // if (responce != null) {

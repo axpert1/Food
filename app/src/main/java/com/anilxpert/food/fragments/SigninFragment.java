@@ -1,6 +1,7 @@
 package com.anilxpert.food.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.anilxpert.food.loopjServcice.CmdParams;
 import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.loopjServcice.JsonDeserializer;
 import com.anilxpert.food.loopjServcice.NetworkManager;
+import com.anilxpert.food.models.FbJson;
 import com.anilxpert.food.models.LoginModel;
 import com.anilxpert.food.utils.AppUrl;
 import com.anilxpert.food.utils.SetRules;
@@ -140,18 +142,15 @@ public class SigninFragment extends Fragment implements View.OnClickListener, Ne
     public void onSuccess(boolean success, String response, int which) {
         LoginModel loginModel = JsonDeserializer.deserializeJson(response, LoginModel.class);
         if (loginModel.status == 1) {
-            SharedPref.putSP(ConstantField.USER_ID, "0");
+            Utils.logoutFacebook(getContext());
+            SharedPref.putSP(ConstantField.USER_ID, loginModel.userDetails.userId);
             SharedPref.putSP(ConstantField.USER_EMAIL, loginModel.userDetails.email);
             SharedPref.putSP(ConstantField.USER_MOBILE, loginModel.userDetails.mobile);
             SharedPref.putSP(ConstantField.USER_F_NAME, loginModel.userDetails.fName);
             SharedPref.putSP(ConstantField.USER_L_NAME, loginModel.userDetails.lName);
-
             Utils.clearPriviousActivity(mContext, DashBordActivity.class);
-
         } else {
-
-            dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), loginModel.msg, getString(R.string.cancel), "", this);
-
+            dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), loginModel.message, getString(R.string.cancel), "", this);
         }
 
 
@@ -203,9 +202,17 @@ public class SigninFragment extends Fragment implements View.OnClickListener, Ne
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
                 Log.v("LoginActivity", response.toString());
-                try {
-                    JSONObject fbObject = response.getJSONObject();
-                    String name = fbObject.getString("");
+                FbJson jsonFB = JsonDeserializer.deserializeJson(object.toString(), FbJson.class);
+                if (jsonFB.email.trim().length() > 0) {
+                    RequestParams params = CmdParams.registerFB(jsonFB.firstName, jsonFB.lastName, jsonFB.email);
+                    apiCall(getString(R.string.please_wait), AppUrl.ADD_USER_FB, params, true, ConstantField.WHITCH_2);
+                } else {
+                    dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "facebook email not valid", getString(R.string.retry), "", null);
+                }
+
+//                try {
+//                    JSONObject fbObject = response.getJSONObject();
+//                    String name = fbObject.getString("");
 
 
 //                    if (fbObject.has(Constants.FLD_EMAIL)) {
@@ -220,16 +227,22 @@ public class SigninFragment extends Fragment implements View.OnClickListener, Ne
 //                            //TODO.. email not comes from facebook do further work here
 //                        }
 //                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
             }
         });
         Bundle parameters = new Bundle();
         parameters.putString("fields", "id,name,email,gender, birthday,picture.type(small)");
         request.setParameters(parameters);
         request.executeAsync();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

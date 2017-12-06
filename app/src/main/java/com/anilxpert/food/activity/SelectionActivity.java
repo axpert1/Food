@@ -31,8 +31,6 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
         btnSignup = (Button) findViewById(R.id.btnSignUp);
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnMenu = (Button) findViewById(R.id.btnMenu);
-
-
         btnSignup.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
         btnMenu.setOnClickListener(this);
@@ -42,11 +40,10 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSignUp:
-                Utils.startActivityPutValue(SelectionActivity.this, LogRegActivity.class,  getString(R.string.str_sign_in));
+                Utils.startActivityPutValue(SelectionActivity.this, LogRegActivity.class, getString(R.string.str_sign_in));
                 break;
             case R.id.btnRegister:
-                Utils.startActivityPutValue(SelectionActivity.this, LogRegActivity.class,  getString(R.string.str_register));
-
+                Utils.startActivityPutValue(SelectionActivity.this, LogRegActivity.class, getString(R.string.str_register));
                 break;
             case R.id.btnMenu:
                 Utils.startActivity(mContext, DashBordActivity.class);

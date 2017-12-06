@@ -5,6 +5,7 @@ package com.anilxpert.food.loopjServcice;
  */
 public class ConstantField {
     public static final int WHITCH_1 = 1;
+    public static final int WHITCH_2 = 2;
 
 
     public static String VAL_POST = "post";

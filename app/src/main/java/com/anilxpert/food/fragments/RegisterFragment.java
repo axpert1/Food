@@ -1,6 +1,7 @@
 package com.anilxpert.food.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.loopjServcice.JsonDeserializer;
 import com.anilxpert.food.loopjServcice.NetworkManager;
 import com.anilxpert.food.models.CommonModel;
+import com.anilxpert.food.models.FbJson;
 import com.anilxpert.food.utils.AppUrl;
 import com.anilxpert.food.utils.SetRules;
 import com.anilxpert.food.utils.SharedPref;
@@ -134,13 +136,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         Log.e("Responce", " Success " + response);
         CommonModel commonModel = JsonDeserializer.deserializeJson(response, CommonModel.class);
         if (commonModel.status == 1) {
-
+            Utils.logoutFacebook(getContext());
             SharedPref.putSP(ConstantField.USER_ID, commonModel.userId);
             SharedPref.putSP(ConstantField.USER_EMAIL, Utils.getEditText(etxtEmail));
             SharedPref.putSP(ConstantField.USER_MOBILE, Utils.getEditText(etxtMobile));
             SharedPref.putSP(ConstantField.USER_F_NAME, Utils.getEditText(etxtFName));
             SharedPref.putSP(ConstantField.USER_L_NAME, Utils.getEditText(etxtLName));
-
             Utils.clearPriviousActivity(mContext, DashBordActivity.class);
 
         } else {
@@ -212,27 +213,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
                 Log.v("LoginActivity", response.toString());
-                try {
-                    JSONObject fbObject = response.getJSONObject();
-                    String name = fbObject.getString("");
-
-
-//                    if (fbObject.has(Constants.FLD_EMAIL)) {
-//
-//                        if (Util.isDeviceOnline(getActivity())) {
-//                            //TODO.. found email call api here
-//                        } else {
-//                            Util.showCenterToast(getActivity(), getResources().getString(R.string.msg_internet_connection));
-//                        }
-//                    } else {
-//                        if (email.length() == 0) {
-//                            //TODO.. email not comes from facebook do further work here
-//                        }
-//                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                FbJson jsonFB = JsonDeserializer.deserializeJson(object.toString(), FbJson.class);
+                if (jsonFB.email.trim().length() > 0) {
+                    RequestParams params = CmdParams.registerFB(jsonFB.firstName, jsonFB.lastName, jsonFB.email);
+                    apiCall(getString(R.string.please_wait), AppUrl.ADD_USER_FB, params, true, ConstantField.WHITCH_2);
+                } else {
+                    dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "facebook email not valid", getString(R.string.retry), "", null);
                 }
             }
         });
@@ -240,5 +226,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         parameters.putString("fields", "id,name,email,gender, birthday,picture.type(small)");
         request.setParameters(parameters);
         request.executeAsync();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }
