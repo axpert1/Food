@@ -21,6 +21,7 @@ import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.loopjServcice.JsonDeserializer;
 import com.anilxpert.food.loopjServcice.NetworkManager;
 import com.anilxpert.food.models.FbJson;
+import com.anilxpert.food.models.FdSaveServer;
 import com.anilxpert.food.models.LoginModel;
 import com.anilxpert.food.utils.AppUrl;
 import com.anilxpert.food.utils.SetRules;
@@ -140,17 +141,32 @@ public class SigninFragment extends Fragment implements View.OnClickListener, Ne
 
     @Override
     public void onSuccess(boolean success, String response, int which) {
-        LoginModel loginModel = JsonDeserializer.deserializeJson(response, LoginModel.class);
-        if (loginModel.status == 1) {
-            Utils.logoutFacebook(getContext());
-            SharedPref.putSP(ConstantField.USER_ID, loginModel.userDetails.userId);
-            SharedPref.putSP(ConstantField.USER_EMAIL, loginModel.userDetails.email);
-            SharedPref.putSP(ConstantField.USER_MOBILE, loginModel.userDetails.mobile);
-            SharedPref.putSP(ConstantField.USER_F_NAME, loginModel.userDetails.fName);
-            SharedPref.putSP(ConstantField.USER_L_NAME, loginModel.userDetails.lName);
-            Utils.clearPriviousActivity(mContext, DashBordActivity.class);
-        } else {
-            dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), loginModel.message, getString(R.string.cancel), "", this);
+
+        if (which == ConstantField.WHITCH_1) {
+            LoginModel loginModel = JsonDeserializer.deserializeJson(response, LoginModel.class);
+            if (loginModel.status == 1) {
+
+                SharedPref.putSP(ConstantField.USER_ID, loginModel.userDetails.userId);
+                SharedPref.putSP(ConstantField.USER_EMAIL, loginModel.userDetails.email);
+                SharedPref.putSP(ConstantField.USER_MOBILE, loginModel.userDetails.mobile);
+                SharedPref.putSP(ConstantField.USER_F_NAME, loginModel.userDetails.fName);
+                SharedPref.putSP(ConstantField.USER_L_NAME, loginModel.userDetails.lName);
+                Utils.clearPriviousActivity(mContext, DashBordActivity.class);
+            } else {
+                dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), loginModel.message, getString(R.string.cancel), "", this);
+            }
+        } else if (which == ConstantField.WHITCH_2) {
+            FdSaveServer fdSaveServer = JsonDeserializer.deserializeJson(response, FdSaveServer.class);
+            if (fdSaveServer.status == 1) {
+                Utils.logoutFacebook(getContext());
+                SharedPref.putSP(ConstantField.USER_ID, fdSaveServer.userId);
+                SharedPref.putSP(ConstantField.USER_EMAIL, fdSaveServer.email);
+                SharedPref.putSP(ConstantField.USER_MOBILE, "");
+                SharedPref.putSP(ConstantField.USER_F_NAME, fdSaveServer.fName);
+                SharedPref.putSP(ConstantField.USER_L_NAME, fdSaveServer.lName);
+
+                Utils.clearPriviousActivity(mContext, DashBordActivity.class);
+            }
         }
 
 
@@ -235,7 +251,7 @@ public class SigninFragment extends Fragment implements View.OnClickListener, Ne
             }
         });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name,email,gender, birthday,picture.type(small)");
+        parameters.putString("fields", "id,name,first_name,last_name,email,gender, birthday,picture.type(small)");
         request.setParameters(parameters);
         request.executeAsync();
     }

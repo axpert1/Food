@@ -76,17 +76,16 @@ public class DashBordActivity extends AppCompatActivity
 
     private void initialize() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         activity_title = (TextView) findViewById(R.id.activity_title);
         activity_title.setText(getString(R.string.app_name));
-
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -119,9 +118,7 @@ public class DashBordActivity extends AppCompatActivity
 
         loginCheck();
 
-//
 //        fragment = new HomeFragment();
-//
 //        if (fragment != null) {
 //            FragmentManager fragmentManager = getSupportFragmentManager();
 //            fragmentManager.beginTransaction().replace(R.id.fmContainer, fragment).addToBackStack(null).commit();

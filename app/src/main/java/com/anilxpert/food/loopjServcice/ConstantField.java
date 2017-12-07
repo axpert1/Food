@@ -39,6 +39,13 @@ public class ConstantField {
     public static String DATE = "date";
     public static String TIME = "time";
 
+//    spiciness
+
+    public static String SPICINESSLEVEL_ID = "spicinesslevel_id";
+    public static String SPICINESSLEVEL_NAME= "spicinesslevel_name";
+    public static String DRYSHOP_ID= "dryshop_id";
+    public static String DRYSHOP_NAME= "dryshop_name";
+
 
 
 }

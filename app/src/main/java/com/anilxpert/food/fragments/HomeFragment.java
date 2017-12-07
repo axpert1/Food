@@ -175,13 +175,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
         switch (view.getId()) {
             case R.id.select_outlet:
                 // Utils.startActivity(getContext(), OrderSelectActivity.class);
-                if (date == null || time == null) {
+                if (SharedPref.getSP(ConstantField.DATE) == null || SharedPref.getSP(ConstantField.DATE) == null) {
                     String msg = "";
-                    if (date == null && time == null) {
+                    if (SharedPref.getSP(ConstantField.DATE) == null && SharedPref.getSP(ConstantField.DATE) == null) {
                         msg = "* Select date and time";
-                    } else if (date == null) {
+                    } else if (SharedPref.getSP(ConstantField.DATE) == null) {
                         msg = "* Select date";
-                    } else if (time == null) {
+                    } else if (SharedPref.getSP(ConstantField.TIME) == null) {
                         msg = "* Select time";
                     }
                     dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), msg, getString(R.string.cancel), "", this);
@@ -209,42 +209,43 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
                 dpd.show(getActivity().getFragmentManager(), "Select Date");
                 break;
             case R.id.txtTime:
-                if (date == null) {
+                if (SharedPref.getSP(ConstantField.DATE) == null) {
                     dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "Select date", getString(R.string.cancel), "", this);
 
                 } else {
-
 //
-                    Calendar today = Calendar.getInstance();
-                    int month = today.get(Calendar.MONTH) + 1;
-                    int year = today.get(Calendar.YEAR);
-                    int dates = today.get(Calendar.DAY_OF_MONTH);
-                    //  Toast.makeText(mContext, "" + dates + "-" + month + "-" + year, Toast.LENGTH_SHORT).show();
-
-                    if (date.equals(Utils.getDateWithFormat(dates, month, year))) {
-//                    final CharSequence[] items = {"11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm"};
-                        if (timeHH > 10 || timeHH < 21) {
-                            alerts(listItems().toArray(new CharSequence[listItems().size()]));
-                        }
-//                        else {
-//                            dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "Select vlaid date", getString(R.string.cancel), "", this);
+////
+//                    Calendar today = Calendar.getInstance();
+//                    int month = today.get(Calendar.MONTH) + 1;
+//                    int year = today.get(Calendar.YEAR);
+//                    int dates = today.get(Calendar.DAY_OF_MONTH);
+//                    //  Toast.makeText(mContext, "" + dates + "-" + month + "-" + year, Toast.LENGTH_SHORT).show();
 //
+//                    if (date.equals(Utils.getDateWithFormat(dates, month, year))) {
+////                    final CharSequence[] items = {"11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm"};
+//                        if (timeHH > 10 || timeHH < 21) {
+//                            alerts(listItems().toArray(new CharSequence[listItems().size()]));
 //                        }
+////                        else {
+////                            dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "Select vlaid date", getString(R.string.cancel), "", this);
+////
+////                        }
+//
+//                    } else {
+//                        alerts(listItemsAllday().toArray(new CharSequence[listItemsAllday().size()]));
+//
+//                    }
+                    java.util.Calendar time = java.util.Calendar.getInstance();
+                    TimePickerDialog ttp = TimePickerDialog.newInstance(
+                            this,
+                            time.get(java.util.Calendar.HOUR_OF_DAY),
+                            time.get(java.util.Calendar.MINUTE),
+                            false
+                    );
+                    setMinMaxTime(ttp);
 
-                    } else {
-                        alerts(listItemsAllday().toArray(new CharSequence[listItemsAllday().size()]));
-
-                    }
-//                    java.util.Calendar time = java.util.Calendar.getInstance();
-//                    TimePickerDialog ttp = TimePickerDialog.newInstance(
-//                            this,
-//                            time.get(java.util.Calendar.HOUR_OF_DAY),
-//                            time.get(java.util.Calendar.MINUTE),
-//                            false
-//                    );
-//                    //ttp.setMinDate(now);
-//                    ttp.setAccentColor(Color.parseColor("#ff5103"));
-//                    ttp.show(getActivity().getFragmentManager(), "Time");
+                    ttp.setAccentColor(Color.parseColor("#ff5103"));
+                    ttp.show(getActivity().getFragmentManager(), "Time");
                 }
 
 
@@ -375,5 +376,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
         });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    private void setMinMaxTime(TimePickerDialog ttp) {
+        Calendar today = Calendar.getInstance();
+        int month = today.get(Calendar.MONTH) + 1;
+        int year = today.get(Calendar.YEAR);
+        int dates = today.get(Calendar.DAY_OF_MONTH);
+        if (SharedPref.getSP(ConstantField.DATE).equals(Utils.getDateWithFormat(dates, month, year))) {
+            Date dt = new Date();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dt);
+            minTime(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
+            ttp.setMinTime(hhMin, mmMin, 0);
+            ttp.setMaxTime(21, 00, 0);
+        } else {
+            ttp.setMinTime(11, 00, 0);
+            ttp.setMaxTime(21, 00, 0);
+        }
+    }
+
+    int hhMin = 0;
+    int mmMin = 0;
+
+    private void minTime(int hour, int min) {
+        int hh = hour;
+        int mm = min;
+        if (min > 30) {
+            hhMin = hh + 1;
+            mmMin = 00;
+        } else {
+            hhMin = hh;
+            mmMin = mm;
+        }
+
     }
 }

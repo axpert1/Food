@@ -82,7 +82,7 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24dp);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
 
 
         activity_title = (TextView) findViewById(R.id.activity_title);
@@ -107,16 +107,28 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
         next_tv_levalone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int current = getItem(+1);
-                if (current < adapter.getCount()) {
-                    // move to next screen
-                    viewPager.setCurrentItem(current);
-                } else {
-                    Utils.startActivity(OrderSelectActivity.this, OrderSummryActivity.class);
-                }
+                //SpicinessFragment  spicinessFm=new SpicinessFragment();
+                setValid(false);
+//                SpicinessFragment spicinessFm = (SpicinessFragment) adapter.mFragmentList.get(0);
+//                // DryShopFragment  dryFm=new DryShopFragment();
+//                if (spicinessFm.setImage()) {
+//                    //   if (dryFm.setImage()){
+//                    int current = getItem(+1);
+//                    if (current < adapter.getCount()) {
+//                        // move to next screen
+//                        viewPager.setCurrentItem(current);
+//                    } else {
+//                        Utils.startActivity(OrderSelectActivity.this, OrderSummryActivity.class);
+//                    }
+//                    //}
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "fff", Toast.LENGTH_LONG).show();
+//                }
+//
 
             }
         });
+        ClearSp();
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -140,16 +152,18 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
         tabThree.setText(getString(R.string.mala));
         tabLayout.getTabAt(2).setCustomView(tabThree);
         // TODO: 12/1/2017  Tab click disable 
-//        LinearLayout tabStrip = ((LinearLayout) tabLayout.getChildAt(0));
-//        for (int i = 0; i < tabStrip.getChildCount(); i++) {
-//            tabStrip.getChildAt(i).setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    return true;
-//                }
-//            });
-//
-//        }
+        LinearLayout tabStrip = ((LinearLayout) tabLayout.getChildAt(0));
+        for (int i = 0; i < tabStrip.getChildCount(); i++) {
+            tabStrip.getChildAt(i).setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    return setValid(true);
+                }
+            });
+        }
+
+
+        // }
         selectTab(tabOne, tabTwo, tabThree);
         tabLayout.setOnTabSelectedListener(
                 new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
@@ -176,6 +190,7 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
     }
 
     private int getItem(int i) {
+        Log.e("getCurrent", "" + viewPager.getCurrentItem());
         return viewPager.getCurrentItem() + i;
     }
 
@@ -199,7 +214,7 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
     }
 
     private void selectTab(TextView selected, TextView a, TextView b) {
-  selected.setTextColor(getResources().getColor(R.color.txtWhite));
+        selected.setTextColor(getResources().getColor(R.color.txtWhite));
         a.setTextColor(getResources().getColor(R.color.txtBlack));
         b.setTextColor(getResources().getColor(R.color.txtBlack));
 
@@ -230,7 +245,12 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
 
         @Override
         public CharSequence getPageTitle(int position) {
+            getRegisteredFragment(position);
             return mFragmentTitleList.get(position);
+        }
+
+        public Fragment getRegisteredFragment(int position) {
+            return mFragmentList.get(position);
         }
     }
 
@@ -322,4 +342,46 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
         Log.e("Responce", " Failed " + response);
     }
 
+    private void ClearSp() {
+        SharedPref.removeSP(ConstantField.SPICINESSLEVEL_ID);
+        SharedPref.removeSP(ConstantField.SPICINESSLEVEL_NAME);
+        SharedPref.removeSP(ConstantField.DRYSHOP_ID);
+        SharedPref.removeSP(ConstantField.DRYSHOP_NAME);
+    }
+
+    private boolean setValid(boolean tabClick) {
+        final SpicinessFragment spicinessFm = (SpicinessFragment) adapter.mFragmentList.get(0);
+        final DryShopFragment dryFm = (DryShopFragment) adapter.mFragmentList.get(1);
+        final MalaFragment malaFm = (MalaFragment) adapter.mFragmentList.get(2);
+        if (adapter.getRegisteredFragment(viewPager.getCurrentItem()) instanceof SpicinessFragment) {
+
+            if (spicinessFm.setImage()) {
+                if (tabClick) {
+                    return false;
+                } else {
+                    int current = getItem(+1);
+                    viewPager.setCurrentItem(current);
+                    return true;
+                }
+
+
+            }
+
+
+        } else if (adapter.getRegisteredFragment(viewPager.getCurrentItem()) instanceof DryShopFragment) {
+            if (dryFm.setImage()) {
+                if (tabClick) {
+                    return false;
+                } else {
+                    int current = getItem(+1);
+                    viewPager.setCurrentItem(current);
+                    return true;
+                }
+            }
+
+        } else if (adapter.getRegisteredFragment(viewPager.getCurrentItem()) instanceof MalaFragment) {
+            return false;
+        }
+        return true;
+    }
 }

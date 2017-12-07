@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.anilxpert.food.R;
+import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.models.OrderSelectModel;
+import com.anilxpert.food.utils.SharedPref;
 
 import java.util.List;
 
@@ -24,12 +27,12 @@ public class SpicinessAdapter extends RecyclerView.Adapter<SpicinessAdapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView txtName;
-        public CheckBox checkboxSelect;
+        public ImageView imgReight;
 
         public MyViewHolder(View view) {
             super(view);
             txtName = (TextView) view.findViewById(R.id.txtName);
-            checkboxSelect = (CheckBox) view.findViewById(R.id.checkboxSelect);
+            imgReight = (ImageView) view.findViewById(R.id.imgReight);
 
         }
     }
@@ -57,10 +60,16 @@ public class SpicinessAdapter extends RecyclerView.Adapter<SpicinessAdapter.MyVi
             public void onClick(View view) {
                 setCheck();
                 spicinessLevelList.get(position).selectItme = true;
+                SharedPref.putSP(ConstantField.SPICINESSLEVEL_ID, spicinessLevelList.get(position).id);
+                SharedPref.putSP(ConstantField.SPICINESSLEVEL_NAME, spicinessLevelList.get(position).productName);
                 notifyDataSetChanged();
             }
         });
-        holder.checkboxSelect.setChecked(spicinessLevel.selectItme);
+        if (spicinessLevel.id.equals(SharedPref.getSP(ConstantField.SPICINESSLEVEL_ID))) {
+            holder.imgReight.setVisibility(View.VISIBLE);
+        } else {
+            holder.imgReight.setVisibility(spicinessLevel.selectItme ? View.VISIBLE : View.INVISIBLE);
+        }
 
     }
 

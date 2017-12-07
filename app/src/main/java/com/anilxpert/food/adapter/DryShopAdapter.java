@@ -1,14 +1,18 @@
 package com.anilxpert.food.adapter;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.anilxpert.food.R;
+import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.models.OrderSelectModel;
+import com.anilxpert.food.utils.SharedPref;
 
 import java.util.List;
 
@@ -23,11 +27,12 @@ public class DryShopAdapter extends RecyclerView.Adapter<DryShopAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView txtName;
+        public ImageView imgReight;
 
         public MyViewHolder(View view) {
             super(view);
             txtName = (TextView) view.findViewById(R.id.txtDryRowName);
-
+            imgReight = (ImageView) view.findViewById(R.id.imgReight);
         }
     }
 
@@ -46,11 +51,35 @@ public class DryShopAdapter extends RecyclerView.Adapter<DryShopAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(DryShopAdapter.MyViewHolder holder, int position) {
-        OrderSelectModel.DrySoup drySoup = drySoups.get(position);
+    public void onBindViewHolder(DryShopAdapter.MyViewHolder holder, final int position) {
+        final OrderSelectModel.DrySoup drySoup = drySoups.get(position);
         holder.txtName.setText(drySoup.productName);
+        holder.txtName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setCheck();
+                drySoups.get(position).selectItme = true;
+                SharedPref.putSP(ConstantField.DRYSHOP_ID, drySoups.get(position).id);
+                SharedPref.putSP(ConstantField.DRYSHOP_NAME, drySoups.get(position).productName);
+                notifyDataSetChanged();
+
+            }
+        });
+        if (drySoup.id.equals(SharedPref.getSP(ConstantField.DRYSHOP_ID))) {
+            holder.imgReight.setVisibility(View.VISIBLE);
+        } else {
+            holder.imgReight.setVisibility(drySoup.selectItme ? View.VISIBLE : View.INVISIBLE);
+        }
 
     }
+
+    public void setCheck() {
+        for (int i = 0; drySoups.size() > i; i++) {
+            drySoups.get(i).selectItme = false;
+        }
+
+    }
+
 
     @Override
     public int getItemCount() {

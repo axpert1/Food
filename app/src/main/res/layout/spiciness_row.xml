@@ -16,11 +16,13 @@
         android:text="Helllo"
         android:textColor="@color/bgBlack" />
 
-    <CheckBox
-        android:id="@+id/checkboxSelect"
+    <ImageView
+        android:id="@+id/imgReight"
         android:layout_width="@dimen/dp_50"
         android:layout_height="match_parent"
-        android:button="@drawable/checkbox_button"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:src="@drawable/right"
+        android:scaleType="centerInside"
+        android:visibility="gone" />
 
 </LinearLayout>

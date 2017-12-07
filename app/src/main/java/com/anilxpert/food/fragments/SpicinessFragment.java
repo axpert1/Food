@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -16,8 +17,10 @@ import com.anilxpert.food.R;
 import com.anilxpert.food.activity.DashBordActivity;
 import com.anilxpert.food.activity.OrderSelectActivity;
 import com.anilxpert.food.adapter.SpicinessAdapter;
+import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.loopjServcice.JsonDeserializer;
 import com.anilxpert.food.models.OrderSelectModel;
+import com.anilxpert.food.utils.SharedPref;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,7 @@ public class SpicinessFragment extends Fragment implements View.OnClickListener,
 
     private RelativeLayout relative_tab;
     private RecyclerView recyclerSpicess;
+    private ImageView error;
     private View v;
 
     private SpicinessAdapter mAdapter;
@@ -44,6 +48,7 @@ public class SpicinessFragment extends Fragment implements View.OnClickListener,
         mContext = getActivity();
 
         relative_tab = (RelativeLayout) v.findViewById(R.id.relative_tab);
+        error = (ImageView) v.findViewById(R.id.error);
 
 
         relative_tab.setOnClickListener(this);
@@ -80,5 +85,16 @@ public class SpicinessFragment extends Fragment implements View.OnClickListener,
 
 
         }
+    }
+
+    public boolean setImage() {
+        if (SharedPref.getSP(ConstantField.SPICINESSLEVEL_ID) != null) {
+            error.setVisibility(View.GONE);
+            return true;
+        } else {
+            error.setVisibility(View.VISIBLE);
+            return false;
+        }
+
     }
 }

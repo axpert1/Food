@@ -56,6 +56,7 @@ public class OrderSelectModel {
         @SerializedName("updated_at")
         @Expose
         public String updatedAt;
+        public boolean selectItme = false;
 
     }
 
@@ -88,7 +89,7 @@ public class OrderSelectModel {
         @SerializedName("updated_at")
         @Expose
         public String updatedAt;
-        public boolean selectItme;
+        public boolean selectItme = false;
 
     }
 
@@ -121,6 +122,7 @@ public class OrderSelectModel {
         @SerializedName("updated_at")
         @Expose
         public String updatedAt;
+        public boolean selectItme;
 
     }
 }

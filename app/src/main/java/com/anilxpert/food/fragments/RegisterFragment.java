@@ -22,6 +22,7 @@ import com.anilxpert.food.loopjServcice.JsonDeserializer;
 import com.anilxpert.food.loopjServcice.NetworkManager;
 import com.anilxpert.food.models.CommonModel;
 import com.anilxpert.food.models.FbJson;
+import com.anilxpert.food.models.FdSaveServer;
 import com.anilxpert.food.utils.AppUrl;
 import com.anilxpert.food.utils.SetRules;
 import com.anilxpert.food.utils.SharedPref;
@@ -134,19 +135,33 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onSuccess(boolean success, String response, int which) {
         Log.e("Responce", " Success " + response);
-        CommonModel commonModel = JsonDeserializer.deserializeJson(response, CommonModel.class);
-        if (commonModel.status == 1) {
-            Utils.logoutFacebook(getContext());
-            SharedPref.putSP(ConstantField.USER_ID, commonModel.userId);
-            SharedPref.putSP(ConstantField.USER_EMAIL, Utils.getEditText(etxtEmail));
-            SharedPref.putSP(ConstantField.USER_MOBILE, Utils.getEditText(etxtMobile));
-            SharedPref.putSP(ConstantField.USER_F_NAME, Utils.getEditText(etxtFName));
-            SharedPref.putSP(ConstantField.USER_L_NAME, Utils.getEditText(etxtLName));
-            Utils.clearPriviousActivity(mContext, DashBordActivity.class);
 
-        } else {
-            dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), Utils.getEditText(etxtEmail) + "\n Email is already Exists", getString(R.string.cancel), "", this);
 
+        if (which == ConstantField.WHITCH_1) {
+            CommonModel commonModel = JsonDeserializer.deserializeJson(response, CommonModel.class);
+            if (commonModel.status == 1) {
+
+                SharedPref.putSP(ConstantField.USER_ID, commonModel.userId);
+                SharedPref.putSP(ConstantField.USER_EMAIL, Utils.getEditText(etxtEmail));
+                SharedPref.putSP(ConstantField.USER_MOBILE, Utils.getEditText(etxtMobile));
+                SharedPref.putSP(ConstantField.USER_F_NAME, Utils.getEditText(etxtFName));
+                SharedPref.putSP(ConstantField.USER_L_NAME, Utils.getEditText(etxtLName));
+                Utils.clearPriviousActivity(mContext, DashBordActivity.class);
+            } else {
+                dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), Utils.getEditText(etxtEmail) + "\n Email is already Exists", getString(R.string.cancel), "", this);
+
+            }
+        } else if (which == ConstantField.WHITCH_2) {
+            FdSaveServer fdSaveServer = JsonDeserializer.deserializeJson(response, FdSaveServer.class);
+            if (fdSaveServer.status == 1) {
+                Utils.logoutFacebook(getContext());
+                SharedPref.putSP(ConstantField.USER_ID, fdSaveServer.userId);
+                SharedPref.putSP(ConstantField.USER_EMAIL, fdSaveServer.email);
+                SharedPref.putSP(ConstantField.USER_MOBILE, "");
+                SharedPref.putSP(ConstantField.USER_F_NAME, fdSaveServer.fName);
+                SharedPref.putSP(ConstantField.USER_L_NAME, fdSaveServer.lName);
+                Utils.clearPriviousActivity(mContext, DashBordActivity.class);
+            }
         }
 
     }
@@ -223,7 +238,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
             }
         });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name,email,gender, birthday,picture.type(small)");
+        parameters.putString("fields", "id,name,first_name,last_name,email,gender, birthday,picture.type(small)");
         request.setParameters(parameters);
         request.executeAsync();
     }

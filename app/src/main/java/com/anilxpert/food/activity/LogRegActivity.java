@@ -35,7 +35,7 @@ public class LogRegActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24dp);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
 
 
         activity_title = (TextView) findViewById(R.id.activity_title);

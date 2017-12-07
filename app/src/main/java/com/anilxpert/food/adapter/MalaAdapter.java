@@ -5,10 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.anilxpert.food.R;
+import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.models.OrderSelectModel;
+import com.anilxpert.food.utils.SharedPref;
 
 import java.util.List;
 
@@ -43,17 +46,19 @@ public class MalaAdapter extends RecyclerView.Adapter<MalaAdapter.MyViewHolder> 
     public MalaAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.mala_row, parent, false);
-
         return new MalaAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(MalaAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(MalaAdapter.MyViewHolder holder,final int position) {
         OrderSelectModel.MalaXiangGuo malaXiangGuo = malaXiangGuos.get(position);
         holder.txtName.setText(malaXiangGuo.productName);
         holder.txtMalaRowPrice.setText(" $ " + malaXiangGuo.price);
 
+
     }
+
+
 
     @Override
     public int getItemCount() {
