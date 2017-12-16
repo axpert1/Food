@@ -18,7 +18,7 @@ public class TermsFragment extends Fragment {
         /** Inflating the layout for this fragment **/
         View v = inflater.inflate(R.layout.terms, null);
 
-        getActivity().setTitle("FaqFragment");
+        getActivity().setTitle("FaqActivity");
         return v;
     }
 }

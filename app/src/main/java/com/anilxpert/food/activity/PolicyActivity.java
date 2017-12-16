@@ -18,7 +18,7 @@ public class PolicyFragment extends Fragment {
         /** Inflating the layout for this fragment **/
         View v = inflater.inflate(R.layout.policy, null);
 
-        getActivity().setTitle("FaqFragment");
+        getActivity().setTitle("FaqActivity");
         return v;
     }
 }

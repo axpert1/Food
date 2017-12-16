@@ -52,7 +52,7 @@ public class ContectUsFragment extends Fragment implements View.OnClickListener,
             @Override
             public void onClick(View view) {
                 dilogCustom.dismissRetryAlert();
-                ((DashBordActivity) getActivity()).gotoNextScreen(new HomeFragment(), mContext.getString(R.string.n_find_us));
+             //   ((DashBordActivity) getActivity()).gotoNextScreen(new HomeFragment(), mContext.getString(R.string.n_find_us));
             }
         };
         return view;
