@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp_40"
+        android:orientation="horizontal">
+
+        <com.anilxpert.food.custom_class.TextViewRegularBold
+            android:id="@+id/txtCuponCode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center|left"
+            android:hint="@string/have_a_coupon_code_hint"
+            android:minHeight="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:text="Coupon100"
+            android:textSize="@dimen/sp_14" />
+
+        <com.anilxpert.food.custom_class.RippleViewButton
+            android:id="@+id/btnapplyCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="@string/apply"
+            android:textColor="@color/blue" />
+
+    </LinearLayout>
+
+</LinearLayout>

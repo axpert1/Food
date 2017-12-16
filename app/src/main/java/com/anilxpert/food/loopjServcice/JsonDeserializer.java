@@ -12,6 +12,7 @@ public class JsonDeserializer {
         T result = null;
 
         result = gson.fromJson(jsonString, type);
+
         return result;
     }
 }

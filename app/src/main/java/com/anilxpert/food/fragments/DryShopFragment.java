@@ -15,6 +15,7 @@ import com.anilxpert.food.R;
 import com.anilxpert.food.activity.OrderSelectActivity;
 import com.anilxpert.food.adapter.DryShopAdapter;
 import com.anilxpert.food.adapter.SpicinessAdapter;
+import com.anilxpert.food.custom_class.MyDividerItemDecoration;
 import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.loopjServcice.JsonDeserializer;
 import com.anilxpert.food.models.OrderSelectModel;

@@ -166,7 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Alredy have a account"
+                android:text="Already have a account?"
                 android:textAlignment="center" />
 
             <com.anilxpert.food.custom_class.RippleViewButton

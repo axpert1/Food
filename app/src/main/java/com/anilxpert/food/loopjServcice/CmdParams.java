@@ -1,5 +1,6 @@
 package com.anilxpert.food.loopjServcice;
 
+import com.anilxpert.food.utils.SharedPref;
 import com.loopj.android.http.RequestParams;
 
 /**
@@ -40,7 +41,6 @@ public class CmdParams {
     public static RequestParams getParamsForgot(String email) {
         RequestParams params = new RequestParams();
         params.put("email", email);
-
         return params;
     }
 
@@ -50,6 +50,43 @@ public class CmdParams {
         params.put("email", email);
         params.put("mobile", mobile);
         params.put("comment", comment);
+        return params;
+    }
+
+    public static RequestParams cuponCode(String code) {
+        RequestParams params = new RequestParams();
+        params.put("coupon_code", code);
+        params.put("user_id", SharedPref.getSP(ConstantField.USER_ID));
+        return params;
+    }
+
+    public static RequestParams orderList() {
+        RequestParams params = new RequestParams();
+        params.put("user_id", SharedPref.getSP(ConstantField.USER_ID));
+        return params;
+    }
+
+    public static RequestParams orderDetails(String orderId) {
+        RequestParams params = new RequestParams();
+        params.put("order_id", orderId);
+        return params;
+    }
+
+    public static RequestParams getParamsPlaceOrder(String dataJson, String totalAmount, String withDiscountAmount, String cuponID, String note) {
+        RequestParams params = new RequestParams();
+        params.put("user_id", SharedPref.getSP(ConstantField.USER_ID));
+        params.put("date", SharedPref.getSP(ConstantField.DATE));
+        params.put("time", SharedPref.getSP(ConstantField.TIME));
+        params.put("location_id", SharedPref.getSP(ConstantField.ADDRESS_ID));
+        params.put("order_json", dataJson);
+        params.put("total_amount", totalAmount);//total amount
+        params.put("rest_amount", withDiscountAmount);//after discount
+        params.put("coupon_id", cuponID);
+        params.put("notes", note);
+        params.put("spiceness_level", SharedPref.getSP(ConstantField.SPICINESSLEVEL_NAME));
+        params.put("dry_or_soup", SharedPref.getSP(ConstantField.DRYSHOP_NAME));
+
+
         return params;
     }
 }

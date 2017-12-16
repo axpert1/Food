@@ -1,13 +1,11 @@
 package com.anilxpert.food.fragments;
 
+import com.anilxpert.food.activity.FindActivity;
 import com.anilxpert.food.dilogs.DilogCustom;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
-import android.app.Dialog;
-
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,16 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.anilxpert.food.R;
 import com.anilxpert.food.activity.DashBordActivity;
-import com.anilxpert.food.activity.LogRegActivity;
 import com.anilxpert.food.activity.OrderSelectActivity;
 import com.anilxpert.food.loopjServcice.ConstantField;
 import com.anilxpert.food.utils.SharedPref;
@@ -38,7 +32,6 @@ import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,28 +45,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    private SliderLayout mDemoSlider;
-    private TextView selectOutlet;
-    private Context mContext;
-    private Button btnProceed;
-    private RelativeLayout relative1;
 
-    private DilogCustom dilogCustom;
-
-    private TextView txtDate;
-    private TextView txtTime;
-    private TextView txtAddress;
-
-    private ImageView imgClose;
-
-    static final int TIME_DIALOG_ID = 999;
-    private int hour;
-    private int minute;
-
-    private String format = "";
-    private String date = null;
-    private String time = null;
-    private int timeHH;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,56 +56,56 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frg_home, container, false);
-        mContext = getActivity();
-        dilogCustom = new DilogCustom();
+//        mContext = getActivity();
+      ///  dilogCustom = new DilogCustom();
         Calendar calander = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH");
-        timeHH = Integer.parseInt(simpleDateFormat.format(calander.getTime()));
+       // timeHH = Integer.parseInt(simpleDateFormat.format(calander.getTime()));
 
         Calendar c = Calendar.getInstance();
-        hour = c.get(Calendar.HOUR_OF_DAY);
-        minute = c.get(Calendar.MINUTE);
+       // hour = c.get(Calendar.HOUR_OF_DAY);
+        //minute = c.get(Calendar.MINUTE);
 
         int h = Calendar.getInstance().get(Calendar.HOUR);
 
         slidingImage(getList(), view);
-        selectOutlet = (TextView) view.findViewById(R.id.select_outlet);
+        //selectOutlet = (TextView) view.findViewById(R.id.select_outlet);
 
-        txtDate = (TextView) view.findViewById(R.id.txtDate);
-        txtTime = (TextView) view.findViewById(R.id.txtTime);
+      //  txtDate = (TextView) view.findViewById(R.id.txtDate);
+      //  txtTime = (TextView) view.findViewById(R.id.txtTime);
 
-        txtAddress = (TextView) view.findViewById(R.id.txtAddress);
-        imgClose = (ImageView) view.findViewById(R.id.imgClose);
+        //txtAddress = (TextView) view.findViewById(R.id.txtAddress);
+        //imgClose = (ImageView) view.findViewById(R.id.imgClose);
 
-        selectOutlet = (TextView) view.findViewById(R.id.select_outlet);
-        selectOutlet.setOnClickListener(this);
-        relative1 = (RelativeLayout) view.findViewById(R.id.relative1);
-        btnProceed = (Button) view.findViewById(R.id.btnProceed);
-        btnProceed.setOnClickListener(this);
+       // selectOutlet = (TextView) view.findViewById(R.id.select_outlet);
+       // selectOutlet.setOnClickListener(this);
+       // relative1 = (RelativeLayout) view.findViewById(R.id.relative1);
+       // btnProceed = (Button) view.findViewById(R.id.btnProceed);
+       // btnProceed.setOnClickListener(this);
         if (SharedPref.getboolSP(ConstantField.FIND_US)) {
             visableAddress();
         } else {
             hideAddress();
         }
 
-        txtDate.setOnClickListener(this);
-        txtTime.setOnClickListener(this);
+        //txtDate.setOnClickListener(this);
+       // txtTime.setOnClickListener(this);
 
-        imgClose.setOnClickListener(this);
+        //imgClose.setOnClickListener(this);
         return view;
     }
 
     private void visableAddress() {
-        txtAddress.setText(SharedPref.getSP(ConstantField.ADDRESS_NAME));
-        txtDate.setText(SharedPref.getSP(ConstantField.DATE));
-        txtTime.setText(SharedPref.getSP(ConstantField.TIME));
-        relative1.setVisibility(View.VISIBLE);
-        btnProceed.setVisibility(View.VISIBLE);
+      //  txtAddress.setText(SharedPref.getSP(ConstantField.ADDRESS_NAME));
+       // txtDate.setText(SharedPref.getSP(ConstantField.DATE));
+        //txtTime.setText(SharedPref.getSP(ConstantField.TIME));
+       // relative1.setVisibility(View.VISIBLE);
+       // btnProceed.setVisibility(View.VISIBLE);
     }
 
     private void hideAddress() {
-        relative1.setVisibility(View.GONE);
-        btnProceed.setVisibility(View.GONE);
+        ///relative1.setVisibility(View.GONE);
+         //btnProceed.setVisibility(View.GONE);
     }
 
     private List<String> getList() {
@@ -146,8 +118,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
     }
 
     public void slidingImage(List<String> datums, View view) {
-        mDemoSlider = (SliderLayout) view.findViewById(R.id.slider);
-        mDemoSlider.removeAllSliders();
+       // mDemoSlider = (SliderLayout) view.findViewById(R.id.slider);
+       // mDemoSlider.removeAllSliders();
         for (int i = 0; i < datums.size(); i++) {
             DefaultSliderView textSliderView = new DefaultSliderView(getContext());
             // initialize a SliderLayout
@@ -160,13 +132,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
             //    textSliderView.setOnSliderClickListener(this);
             textSliderView.getBundle()
                     .putString("extra", "anil");
-            mDemoSlider.addSlider(textSliderView);
+           // mDemoSlider.addSlider(textSliderView);
 
         }
-        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        mDemoSlider.setCustomIndicator((PagerIndicator) view.findViewById(R.id.custom_indicator));
-        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-        mDemoSlider.setDuration(5000);
+       // mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+       // mDemoSlider.setCustomIndicator((PagerIndicator) view.findViewById(R.id.custom_indicator));
+       // mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+        //mDemoSlider.setDuration(5000);
         // mDemoSlider.setOnClickListener(this);
     }
 
@@ -184,10 +156,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
                     } else if (SharedPref.getSP(ConstantField.TIME) == null) {
                         msg = "* Select time";
                     }
-                    dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), msg, getString(R.string.cancel), "", this);
+                    //dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), msg, getString(R.string.cancel), "", this);
 
                 } else {
-                    ((DashBordActivity) getActivity()).gotoNextScreen(new FindFragment(), mContext.getString(R.string.n_find_us));
+                   // ((DashBordActivity) getActivity()).gotoNextScreen(new FindActivity(), mContext.getString(R.string.n_find_us));
                 }
 
                 break;
@@ -210,7 +182,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
                 break;
             case R.id.txtTime:
                 if (SharedPref.getSP(ConstantField.DATE) == null) {
-                    dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "Select date", getString(R.string.cancel), "", this);
+                    //dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), "Select date", getString(R.string.cancel), "", this);
 
                 } else {
 //
@@ -265,16 +237,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
         StringBuilder stringBuilder = new StringBuilder();
         if (hour == 0) {
             hour += 12;
-            format = "AM";
+          //  format = "AM";
         } else if (hour == 12) {
-            format = "PM";
+        //    format = "PM";
         } else if (hour > 12) {
             hour -= 12;
-            format = "PM";
+          //  format = "PM";
         } else {
-            format = "AM";
+         //   format = "AM";
         }
-        stringBuilder.append(String.format("%02d:%02d", hour, min)).append(format);
+       // stringBuilder.append(String.format("%02d:%02d", hour, min)).append(format);
 
         return stringBuilder.toString();
     }
@@ -285,66 +257,66 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
     }
 
     private void showDate(int year, int month, int day) {
-        txtDate.setText(Utils.getDateWithFormat(day, month, year));
-        date = Utils.getDateWithFormat(day, month, year);
-        SharedPref.putSP(ConstantField.DATE, date);
+       // txtDate.setText(Utils.getDateWithFormat(day, month, year));
+       // date = Utils.getDateWithFormat(day, month, year);
+       // SharedPref.putSP(ConstantField.DATE, date);
 
     }
 
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int selectedHour, int selectedMinute, int second) {
-        txtTime.setText(showTime(selectedHour, selectedMinute));
-        time = showTime(selectedHour, selectedMinute);
-        SharedPref.putSP(ConstantField.TIME, time);
+       // txtTime.setText(showTime(selectedHour, selectedMinute));
+        ///time = showTime(selectedHour, selectedMinute);
+       // SharedPref.putSP(ConstantField.TIME, time);
 
     }
 
-    private List<String> listItems() {
-        List<String> listItems = new ArrayList<String>();
-        //"11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm"
-        //  int h = Calendar.getInstance().get(Calendar.HOUR);
-
-
-        if (timeHH > 10 || timeHH < 21) {
-            for (int i = timeHH; i < 20; i++) {
-                int timeXXX = i + 1;
-                switch (timeXXX) {
-                    case 11:
-                        listItems.add("11:00 am");
-                        break;
-                    case 12:
-                        listItems.add("12:00 pm");
-                        break;
-                    case 13:
-                        listItems.add("1:00 pm");
-                        break;
-                    case 14:
-                        listItems.add("2:00 pm");
-                        break;
-                    case 15:
-                        listItems.add("3:00 pm");
-                        break;
-                    case 16:
-                        listItems.add("4:00 pm");
-                        break;
-                    case 17:
-                        listItems.add("5:00 pm");
-                        break;
-                    case 18:
-                        listItems.add("6:00 pm");
-                        break;
-                    case 19:
-                        listItems.add("7:00 pm");
-                        break;
-                }
-            }
-        }
-
-
-        return listItems;
-        // final CharSequence[] charSequenceItems = listItems.toArray(new CharSequence[listItems.size()]);
-    }
+//    private List<String> listItems() {
+//        List<String> listItems = new ArrayList<String>();
+//        //"11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm"
+//        //  int h = Calendar.getInstance().get(Calendar.HOUR);
+//
+//
+//        if (timeHH > 10 || timeHH < 21) {
+//            for (int i = timeHH; i < 20; i++) {
+//                int timeXXX = i + 1;
+//                switch (timeXXX) {
+//                    case 11:
+//                        listItems.add("11:00 am");
+//                        break;
+//                    case 12:
+//                        listItems.add("12:00 pm");
+//                        break;
+//                    case 13:
+//                        listItems.add("1:00 pm");
+//                        break;
+//                    case 14:
+//                        listItems.add("2:00 pm");
+//                        break;
+//                    case 15:
+//                        listItems.add("3:00 pm");
+//                        break;
+//                    case 16:
+//                        listItems.add("4:00 pm");
+//                        break;
+//                    case 17:
+//                        listItems.add("5:00 pm");
+//                        break;
+//                    case 18:
+//                        listItems.add("6:00 pm");
+//                        break;
+//                    case 19:
+//                        listItems.add("7:00 pm");
+//                        break;
+//                }
+//            }
+//        }
+//
+//
+//        return listItems;
+//        // final CharSequence[] charSequenceItems = listItems.toArray(new CharSequence[listItems.size()]);
+//    }
 
     private List<String> listItemsAllday() {
         List<String> listItems = new ArrayList<String>();
@@ -369,8 +341,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Date
         builder.setItems(items, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 // Do something with the selection
-                txtTime.setText(items[item]);
-                time = "" + items[item];
+//                txtTime.setText(items[item]);
+//                time = "" + items[item];
                 SharedPref.putSP(ConstantField.TIME, "" + items[item]);
             }
         });

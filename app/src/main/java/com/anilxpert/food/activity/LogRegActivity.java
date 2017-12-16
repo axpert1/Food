@@ -28,7 +28,6 @@ public class LogRegActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_reg);
         intentValue = Utils.getintentString(ConstantField.INTENT_1, getIntent());
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);
@@ -36,7 +35,6 @@ public class LogRegActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
-
 
         activity_title = (TextView) findViewById(R.id.activity_title);
         activity_title.setText(intentValue);
@@ -54,7 +52,6 @@ public class LogRegActivity extends AppCompatActivity {
         if (fragment != null) {
             Bundle bundle = new Bundle();
             fragment.setArguments(bundle);
-
             Utils.replaceFrg(LogRegActivity.this, fragment, true, R.id.fmContainerLog);
 
         }

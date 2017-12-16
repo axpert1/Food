@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relEmptyWL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/txtWhite"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_thanks"
+            android:tint="@color/green" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img1"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/txt11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@string/Congratulations"
+                android:gravity="center"
+                android:textColor="@color/btnRed"
+                android:textSize="@dimen/sp_22" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt11"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="center"
+                    android:text="@string/Your_order_has_been_placed"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_18" />
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtYourOrder1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/Your_Order_"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_18"
+
+                    />
+            </LinearLayout>
+
+            <com.anilxpert.food.custom_class.TextViewRegularBold
+                android:id="@+id/txtStartShoppingT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt1"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/btnRed"
+                android:gravity="center"
+                android:padding="@dimen/dp_10"
+                android:text="Done"
+                android:textColor="@color/txtWhite"
+                android:textSize="@dimen/sp_18" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

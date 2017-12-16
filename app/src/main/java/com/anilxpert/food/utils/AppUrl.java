@@ -10,7 +10,6 @@ public class AppUrl {
 
     public static String USER_CONTROLLER = "User_controller/";
 
-
     public static String ADD_USER = BASE_URL + USER_CONTROLLER + "add_user" + TOKEN;
 
     public static String LOG_IN = BASE_URL + USER_CONTROLLER + "login" + TOKEN;
@@ -30,4 +29,11 @@ public class AppUrl {
     public static String GET_LOCATIONS = BASE_URL + USER_CONTROLLER + "get_locations" + TOKEN;
 
     public static String ADD_USER_FB = BASE_URL + USER_CONTROLLER + "add_user_fb" + TOKEN;
+
+    public static String GET_COUPON_CODE_LIST = BASE_URL + USER_CONTROLLER + "get_coupon_code" + TOKEN;
+    public static String CHECK_COUPON_CODE = BASE_URL + USER_CONTROLLER + "apply_coupon_code" + TOKEN;
+
+    public static String PLACE_ORDER = BASE_URL + USER_CONTROLLER + "set_order" + TOKEN;
+    public static String GET_ORDER_LIST = BASE_URL + USER_CONTROLLER + "get_order_list" + TOKEN;
+    public static String GET_ORDER_DETAILS = BASE_URL + USER_CONTROLLER + "get_order_details" + TOKEN;
 }

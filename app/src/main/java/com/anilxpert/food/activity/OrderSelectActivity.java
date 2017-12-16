@@ -1,6 +1,7 @@
 package com.anilxpert.food.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +35,10 @@ import com.anilxpert.food.utils.AppUrl;
 import com.anilxpert.food.utils.SharedPref;
 import com.anilxpert.food.utils.Utils;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +64,7 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
 
     private TabLayout tabLayout;
     private CustomViewPager viewPager;
-    private TextView next_tv_levalone;
+    private Button next_tv_levalone;
     private ViewPagerAdapter adapter;
 
     public OrderSelectActivity.onCallback callbackSpicess;
@@ -68,6 +74,11 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
     public interface onCallback {
         public void onData(boolean success, String response);
     }
+
+
+    public TextView txtQty;
+    public TextView txtTotalAmount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +107,7 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
 
     private void initialize() {
         viewPager = (CustomViewPager) findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(2);
         viewPager.setPagingEnabled(false);
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -103,12 +115,14 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
         setupTabIcons();
 
 
-        next_tv_levalone = (TextView) findViewById(R.id.next_tv_levalone);
+        next_tv_levalone = (Button) findViewById(R.id.next_tv_levalone);
+        txtQty = (TextView) findViewById(R.id.txtQty);
+        txtTotalAmount = (TextView) findViewById(R.id.txtTotalAmount);
         next_tv_levalone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //SpicinessFragment  spicinessFm=new SpicinessFragment();
-                setValid(false);
+                setValid(false, true);
 //                SpicinessFragment spicinessFm = (SpicinessFragment) adapter.mFragmentList.get(0);
 //                // DryShopFragment  dryFm=new DryShopFragment();
 //                if (spicinessFm.setImage()) {
@@ -157,12 +171,10 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
             tabStrip.getChildAt(i).setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    return setValid(true);
+                    return setValid(true, false);
                 }
             });
         }
-
-
         // }
         selectTab(tabOne, tabTwo, tabThree);
         tabLayout.setOnTabSelectedListener(
@@ -349,7 +361,7 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
         SharedPref.removeSP(ConstantField.DRYSHOP_NAME);
     }
 
-    private boolean setValid(boolean tabClick) {
+    private boolean setValid(boolean tabClick, boolean button) {
         final SpicinessFragment spicinessFm = (SpicinessFragment) adapter.mFragmentList.get(0);
         final DryShopFragment dryFm = (DryShopFragment) adapter.mFragmentList.get(1);
         final MalaFragment malaFm = (MalaFragment) adapter.mFragmentList.get(2);
@@ -380,8 +392,37 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
             }
 
         } else if (adapter.getRegisteredFragment(viewPager.getCurrentItem()) instanceof MalaFragment) {
+            if (Integer.parseInt(txtQty.getText().toString()) > 0) {
+                if (button)
+                    if (SharedPref.getSP(ConstantField.SPICINESSLEVEL_NAME) != null && SharedPref.getSP(ConstantField.DRYSHOP_NAME) != null) {
+                        Utils.startActivity(mContext, OrderSummryActivity.class);
+                    } else {
+                        if (SharedPref.getSP(ConstantField.DRYSHOP_NAME) == null)
+                            dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), getString(R.string.setDry), getString(R.string.ok), "", this);
+
+                    }
+
+
+            } else {
+                dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), getString(R.string.setMala), getString(R.string.ok), "", this);
+            }
+
             return false;
         }
         return true;
     }
+
+    public void setQtyAndTotalPrice(int qty, int price) {
+        if (qty > 0) {
+            txtQty.setVisibility(View.VISIBLE);
+            txtTotalAmount.setVisibility(View.VISIBLE);
+        } else {
+            txtQty.setVisibility(View.INVISIBLE);
+            txtTotalAmount.setVisibility(View.INVISIBLE);
+        }
+        txtQty.setText(String.valueOf(qty));
+        txtTotalAmount.setText("$ " + String.valueOf(price));
+    }
+
+
 }

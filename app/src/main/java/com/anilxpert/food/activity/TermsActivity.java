@@ -1,10 +1,14 @@
-package com.anilxpert.food.fragments;
+package com.anilxpert.food.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.anilxpert.food.R;
 
@@ -12,13 +16,36 @@ import com.anilxpert.food.R;
  * Created by AnilXpert 9887230800 on 11/28/2017.
  */
 
-public class TermsFragment extends Fragment {
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        /** Inflating the layout for this fragment **/
-        View v = inflater.inflate(R.layout.terms, null);
+public class TermsActivity extends AppCompatActivity {
+    private TextView activity_title;
 
-        getActivity().setTitle("FaqActivity");
-        return v;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.terms);
+        initialize();
     }
+
+    private void initialize() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
+
+
+        activity_title = (TextView) findViewById(R.id.activity_title);
+        activity_title.setText(getString(R.string.n_terms_of_use));
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return true;
+    }
+
+
 }

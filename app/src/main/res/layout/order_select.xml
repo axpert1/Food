@@ -42,50 +42,52 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:background="#fff">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_marginRight="60dp"
+                    android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp">
+                    android:paddingLeft="20dp">
 
                     <TextView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                        android:id="@+id/txtQty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/totalcount"
                         android:gravity="center"
-                        android:text="1"
+                        android:minHeight="@dimen/dp_28"
+                        android:minWidth="@dimen/dp_28"
+                        android:text="0"
                         android:textColor="#fff"
-                        android:textSize="16dp" />
+                        android:textSize="@dimen/sp_14"
+                        android:visibility="invisible" />
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/txtTotalAmount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:gravity="end"
                         android:paddingRight="20dp"
                         android:paddingTop="4dp"
-                        android:text="$ 15.40"
+                        android:text="$ 00.00"
                         android:textColor="#000"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:visibility="invisible" />
 
+                    <com.anilxpert.food.custom_class.RippleViewButton
+                        android:id="@+id/next_tv_levalone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:background="#DB3732"
+                        android:gravity="center"
+                        android:minWidth="@dimen/dp_100"
+                        android:text="NEXT"
+                        android:textColor="#fff" />
                 </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/next_tv_levalone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_gravity="right"
-                    android:background="#DB3732"
-                    android:padding="15dp"
-                    android:text="NEXT"
-                    android:textColor="#fff" />
 
 
             </RelativeLayout>

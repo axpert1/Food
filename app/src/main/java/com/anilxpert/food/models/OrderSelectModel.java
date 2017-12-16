@@ -56,7 +56,11 @@ public class OrderSelectModel {
         @SerializedName("updated_at")
         @Expose
         public String updatedAt;
-        public boolean selectItme = false;
+
+
+
+        public int qty=0;
+
 
     }
 

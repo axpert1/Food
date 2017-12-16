@@ -1,6 +1,7 @@
 package com.anilxpert.food.utils;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -13,9 +14,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.anilxpert.food.R;
+import com.anilxpert.food.activity.FindActivity;
 import com.anilxpert.food.loopjServcice.ConstantField;
 import com.facebook.login.LoginManager;
 
@@ -31,6 +35,8 @@ import java.util.Date;
  */
 
 public class Utils {
+    private static Dialog confirmation;
+
     // TODO: 10/23/2017   Logout facebook
     public static void logoutFacebook(Context c) {
         LoginManager.getInstance().logOut();
@@ -121,8 +127,6 @@ public class Utils {
     }
 
     public static String getCurrentDate() {
-
-
         DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
         Date date = new Date();
         return dateFormat.format(date);
@@ -142,6 +146,36 @@ public class Utils {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.setClass(context, class1);
         intent.putExtra(ConstantField.INTENT_1, value);
+        ((Activity) context).startActivity(intent);
+    }
+
+    //to start any activity.
+    public static void startActivityPutValueResultCode(Context context, Class<?> class1, String value, int resultCode) {
+        Intent intent = new Intent();
+        // intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setClass(context, class1);
+        intent.putExtra(ConstantField.INTENT_1, value);
+        ((Activity) context).startActivityForResult(intent, resultCode);
+    }
+
+    public static void resultActivity(Context mContext) {
+        Activity activity = (Activity) mContext;
+        Intent returnIntent = new Intent();
+        // returnIntent.putExtra("anil", "anil");
+        activity.setResult(Activity.RESULT_OK, returnIntent);
+        activity.finish();
+    }
+
+    //to start any activity.
+    public static void startActivityPlaceOrder(Context context, Class<?> class1, String data, String payPrice, String cuponID, String notes, String total_amount) {
+        Intent intent = new Intent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setClass(context, class1);
+        intent.putExtra(ConstantField.INTENT_DATA, data);
+        intent.putExtra(ConstantField.INTENT_PRICE, payPrice);
+        intent.putExtra(ConstantField.INTENT_CUPON_ID, cuponID);
+        intent.putExtra(ConstantField.INTENT_NOTES, notes);
+        intent.putExtra(ConstantField.INTENT_TOTAL_AMOUNT, total_amount);
         ((Activity) context).startActivity(intent);
     }
 
@@ -182,4 +216,55 @@ public class Utils {
         return editText.getText().toString().trim();
     }
 
+    public static int setDiscount(int price, int dis) {
+        int discount = 0;
+        if (dis > 0) {
+            discount = (price * dis) / 100;
+        }
+        return discount;
+
+    }
+
+    public static Dialog showThankYouDialog(final Context act, View.OnClickListener onClickListener, String code) {
+
+        if (act != null) {
+            try {
+
+                confirmation = new Dialog(act,
+                        android.R.style.Theme_Translucent_NoTitleBar);
+                confirmation.setContentView(R.layout.thankyou_screen);
+                TextView txtYourOrder1 = (TextView) confirmation.findViewById(R.id.txtYourOrder1);
+                String msg = act.getResources().getString(R.string.Your_Order_) + " " + code;
+                txtYourOrder1.setText(msg);
+                TextView txtStartShoppingT = (TextView) confirmation.findViewById(R.id.txtStartShoppingT);
+
+                if (onClickListener != null) {
+                    txtStartShoppingT.setOnClickListener(onClickListener);
+                } else {
+                    txtStartShoppingT.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            if (confirmation != null)
+                                confirmation.dismiss();
+//                            SharedPref.setCartCount(act,0);
+//                            startActivity(act, DashboardActivity.class);
+                        }
+                    });
+
+                }
+                confirmation.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return confirmation;
+        } else {
+            return null;
+        }
+    }
+
+    public static void dismissThanksDilog() {
+        if (confirmation != null)
+            confirmation.dismiss();
+    }
 }

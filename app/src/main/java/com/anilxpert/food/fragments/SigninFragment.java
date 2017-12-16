@@ -151,7 +151,7 @@ public class SigninFragment extends Fragment implements View.OnClickListener, Ne
                 SharedPref.putSP(ConstantField.USER_MOBILE, loginModel.userDetails.mobile);
                 SharedPref.putSP(ConstantField.USER_F_NAME, loginModel.userDetails.fName);
                 SharedPref.putSP(ConstantField.USER_L_NAME, loginModel.userDetails.lName);
-                Utils.clearPriviousActivity(mContext, DashBordActivity.class);
+                Utils.resultActivity(mContext);
             } else {
                 dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), loginModel.message, getString(R.string.cancel), "", this);
             }
@@ -164,8 +164,7 @@ public class SigninFragment extends Fragment implements View.OnClickListener, Ne
                 SharedPref.putSP(ConstantField.USER_MOBILE, "");
                 SharedPref.putSP(ConstantField.USER_F_NAME, fdSaveServer.fName);
                 SharedPref.putSP(ConstantField.USER_L_NAME, fdSaveServer.lName);
-
-                Utils.clearPriviousActivity(mContext, DashBordActivity.class);
+                Utils.resultActivity(mContext);
             }
         }
 

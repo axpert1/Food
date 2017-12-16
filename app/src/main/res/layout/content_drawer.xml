@@ -9,9 +9,205 @@
     tools:context="com.anilxpert.food.activity.DashBordActivity"
     tools:showIn="@layout/app_bar_drawer">
 
-    <FrameLayout
-        android:id="@+id/fmContainer"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite" />
+        android:background="@color/txtWhite"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/sliderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <com.daimajia.slider.library.Indicators.PagerIndicator
+                    android:id="@+id/custom_indicator"
+                    style="@style/AndroidImageSlider_Corner_Oval_Orange"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/sliderLayout"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_50">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp">
+
+                    <com.anilxpert.food.custom_class.TextViewRegular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:text="Order Now, Collect Late!"
+                        android:textColor="#000000"
+                        android:textSize="19dp" />
+
+                    <com.anilxpert.food.custom_class.ResizableImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/self" />
+
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1.0">
+
+                        <LinearLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            android:layout_weight=".5"
+                            android:background="@drawable/bordrecolor">
+
+
+                            <com.anilxpert.food.custom_class.TextViewRegular
+                                android:id="@+id/txtDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Select a date"
+
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="3dp"
+                            android:layout_weight="0.5"
+                            android:weightSum="1">
+
+                            <com.anilxpert.food.custom_class.TextViewRegular
+                                android:id="@+id/txtTime"
+                                style="@style/SpinnerTheme"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:gravity="center|left"
+                                android:paddingLeft="@dimen/dp_10"
+                                android:text="Setect Time" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/select_outlet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@color/btnRed"
+                        android:gravity="center"
+                        android:minHeight="@dimen/dp_40"
+                        android:text="@string/select_outlet"
+                        android:textColor="@color/txtWhite"
+                        android:textSize="@dimen/sp_16" />
+
+                    <RelativeLayout
+                        android:id="@+id/relative1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:background="@drawable/outlet"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/imgClose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="@dimen/dp_5"
+                            android:src="@drawable/ic_action_cros" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dp_10">
+
+                            <com.anilxpert.food.custom_class.TextViewRegular
+                                android:id="@+id/main_et1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:enabled="false"
+                                android:text="Address"
+                                android:textColor="@color/txtBlack"
+                                android:textSize="@dimen/sp_14" />
+
+                            <com.anilxpert.food.custom_class.TextViewRegular
+                                android:id="@+id/txtAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginLeft="@dimen/dp_10"
+                                android:layout_marginRight="@dimen/dp_10"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:gravity="center"
+
+
+                                android:textColor="@color/txtBlack"
+
+                                android:textSize="@dimen/sp_14" />
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <com.anilxpert.food.custom_class.RippleViewButton
+            android:id="@+id/btnProceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/btnRed"
+            android:gravity="center"
+            android:minHeight="@dimen/dp_40"
+            android:text="Proceed"
+            android:textColor="@color/txtWhite"
+            android:visibility="gone" />
+    </RelativeLayout>
+    >
 </LinearLayout>

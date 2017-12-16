@@ -11,7 +11,7 @@ public class ValidField {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
     public final static boolean isValidEmailOrPhone(CharSequence target) {
-        if (target.length()!=10) {
+        if (target.length()!=8) {
             return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
         } else {
             return android.util.Patterns.PHONE.matcher(target).matches();
@@ -26,7 +26,7 @@ public class ValidField {
 
     }
     public static final boolean isValidPhoneNumber(CharSequence target) {
-        if (target.length()!=10) {
+        if (target.length()!=8) {
             return false;
         } else {
             return android.util.Patterns.PHONE.matcher(target).matches();

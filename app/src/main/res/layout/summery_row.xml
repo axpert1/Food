@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:minHeight="40dp"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dp_2">
+
+
+    <com.anilxpert.food.custom_class.TextViewRegularBold
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="center|left"
+        android:text="Bol Choy"
+        android:textColor="@color/txtBlack" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".1"
+                android:orientation="horizontal">
+
+                <com.anilxpert.food.custom_class.RippleViewButton
+                    android:id="@+id/btnRemove"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="-"
+                    android:textColor="@color/btnRed"
+             />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".1"
+                android:orientation="horizontal">
+
+                <com.anilxpert.food.custom_class.TextViewRegularBold
+
+                    android:id="@+id/txtQty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#000"
+                    android:textSize="@dimen/sp_16" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight=".1"
+                android:orientation="horizontal">
+
+                <com.anilxpert.food.custom_class.RippleViewButton
+                    android:id="@+id/btnAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="+"
+                    android:textColor="@color/btnRed"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <com.anilxpert.food.custom_class.TextViewRegular
+            android:id="@+id/txtPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center|right"
+            android:minWidth="@dimen/dp_80"
+            android:paddingRight="5dp"
+            android:text="$ 04.40"
+            android:textColor="@color/txtBlack" />
+    </LinearLayout>
+</LinearLayout>

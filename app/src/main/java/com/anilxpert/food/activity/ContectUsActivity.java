@@ -1,17 +1,17 @@
-package com.anilxpert.food.fragments;
+package com.anilxpert.food.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.anilxpert.food.R;
-import com.anilxpert.food.activity.DashBordActivity;
 import com.anilxpert.food.dilogs.DilogCustom;
 import com.anilxpert.food.loopjServcice.CmdParams;
 import com.anilxpert.food.loopjServcice.ConstantField;
@@ -20,7 +20,6 @@ import com.anilxpert.food.loopjServcice.NetworkManager;
 import com.anilxpert.food.models.CommonModel;
 import com.anilxpert.food.utils.AppUrl;
 import com.anilxpert.food.utils.SetRules;
-import com.anilxpert.food.utils.SharedPref;
 import com.anilxpert.food.utils.Utils;
 import com.loopj.android.http.RequestParams;
 
@@ -29,8 +28,8 @@ import com.loopj.android.http.RequestParams;
  * Created by this pc on 11/24/2017.
  */
 
-public class ContectUsFragment extends Fragment implements View.OnClickListener, NetworkManager.onCallback {
-    private View view;
+public class ContectUsActivity extends AppCompatActivity implements View.OnClickListener, NetworkManager.onCallback {
+    private TextView activity_title;
     private Context mContext;
     private DilogCustom dilogCustom;
     private View.OnClickListener retryClick;
@@ -42,28 +41,40 @@ public class ContectUsFragment extends Fragment implements View.OnClickListener,
     private EditText edtMessage;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        /** Inflating the layout for this fragment **/
-        view = inflater.inflate(R.layout.contect_us, null);
-        mContext = getActivity();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.contect_us);
+        mContext = ContectUsActivity.this;
         dilogCustom = new DilogCustom();
         initialize();
         retryClick = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dilogCustom.dismissRetryAlert();
-             //   ((DashBordActivity) getActivity()).gotoNextScreen(new HomeFragment(), mContext.getString(R.string.n_find_us));
+                finish();
             }
         };
-        return view;
     }
 
+
     private void initialize() {
-        btnSend = (Button) view.findViewById(R.id.btnSend);
-        edtName = (EditText) view.findViewById(R.id.edtName);
-        edtEmail = (EditText) view.findViewById(R.id.edtEmail);
-        edtMobile = (EditText) view.findViewById(R.id.edtMobile);
-        edtMessage = (EditText) view.findViewById(R.id.edtMessage);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
+
+
+        activity_title = (TextView) findViewById(R.id.activity_title);
+        activity_title.setText(getString(R.string.n_contact_us));
+
+        btnSend = (Button) findViewById(R.id.btnSend);
+        edtName = (EditText) findViewById(R.id.edtName);
+        edtEmail = (EditText) findViewById(R.id.edtEmail);
+        edtMobile = (EditText) findViewById(R.id.edtMobile);
+        edtMessage = (EditText) findViewById(R.id.edtMessage);
 
         btnSend.setOnClickListener(this);
 
@@ -117,6 +128,13 @@ public class ContectUsFragment extends Fragment implements View.OnClickListener,
             return true;
         }
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return true;
     }
 
 }

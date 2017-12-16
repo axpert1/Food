@@ -4,6 +4,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <include layout="@layout/toobar" />
@@ -13,7 +15,8 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/llHeader"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -30,100 +33,97 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
                 android:orientation="vertical"
-                android:paddingLeft="12dp"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
                 android:paddingTop="8dp">
 
-                <TextView
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_10" />
+
+                <com.anilxpert.food.custom_class.RippleViewButton
+                    android:id="@+id/btnFindUs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="930 Yishun Avenue 2"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="#03-47/57 Northpoint Shopping"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Center, Singapore 769098"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:id="@+id/change_btn"
-                    android:layout_width="100dp"
-                    android:layout_height="25dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/shape_rect_orage"
-                    android:gravity="center"
-                    android:padding="2dp"
+                    android:gravity="center|left"
+
+                    android:paddingBottom="@dimen/dp_2"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:paddingTop="@dimen/dp_2"
                     android:text="Change"
                     android:textColor="#fff"
                     android:textSize="13dp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/collection"
+                    android:textSize="@dimen/sp_10" />
+
+
+                <com.anilxpert.food.custom_class.TextViewRegularBold
+                    android:id="@+id/txtTimeAndDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="05:00 pm"
+                    android:textColor="#000"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="90dp"
-            android:layout_alignParentRight="true"
-            android:gravity="right"
-            android:orientation="vertical"
-            android:paddingRight="12dp"
-            android:paddingTop="8dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Collection"
-                android:textAlignment="center"
-                android:textSize="10dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Time"
-                android:textAlignment="center"
-                android:textSize="10dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="05:00 pm"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="90dp"
-            android:layout_marginTop="90dp">
+            android:layout_above="@+id/llBottom"
+            android:layout_below="@id/llHeader">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/add_note"
+                <com.anilxpert.food.custom_class.EditTextViewRegular
+                    android:id="@+id/edtNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bordrecolor"
-                    android:paddingBottom="12dp"
+                    android:background="@null"
+                    android:gravity="center|left"
+                    android:hint="@string/add_allergy_notes"
+                    android:minHeight="@dimen/dp_40"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:paddingTop="12dp"
-                    android:text="Add allergy notes"
-                    android:textColor="#DB3732" />
+                    android:textColor="@color/btnRed"
+                    android:textColorHint="@color/btnRed"
+                    android:textSize="@dimen/sp_16" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height=".2dp"
+                    android:background="@color/gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -132,370 +132,46 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp">
 
-                    <TextView
+                    <com.anilxpert.food.custom_class.TextViewRegular
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="12dp"
-                        android:paddingTop="12dp"
-                        android:text="Mala"
-                        android:textColor="#DB3732" />
+                        android:gravity="center|left"
+                        android:minHeight="@dimen/dp_40"
+                        android:text="@string/mala"
+                        android:textColor="@color/btnRed" />
 
-                    <TextView
+                    <com.anilxpert.food.custom_class.TextViewRegularBold
+                        android:id="@+id/txtSpineies"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingTop="2dp"
-                        android:text="Fiery Spicy"
-                        android:textColor="#000" />
+                        android:gravity="center|left"
+                        android:minHeight="@dimen/dp_40"
+                        android:textColor="@color/txtBlack" />
 
-                    <TextView
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height=".2dp"
+                        android:background="@color/gray" />
+
+                    <com.anilxpert.food.custom_class.TextViewRegularBold
+                        android:id="@+id/txtDryndShop"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="2dp"
-                        android:paddingTop="2dp"
-                        android:text="Soup"
-                        android:textColor="#000" />
+                        android:gravity="center|left"
+                        android:minHeight="@dimen/dp_40"
+                        android:text="@string/fieryspicy"
+                        android:textColor="@color/txtBlack" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height=".2dp"
+                        android:background="@color/gray" />
 
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="1.0">
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:text="Bol Choy"
-                                android:textColor="#000" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.3"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:weightSum="1">
-
-                            <LinearLayout
-                                android:layout_width="fill_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:weightSum="1.0">
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".3"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/decrement1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:padding="2dp"
-                                        android:text="-"
-                                        android:textAlignment="center"
-                                        android:textColor="#DB3732"
-                                        android:textSize="18dp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".4"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/num_pic1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="@null"
-                                        android:text="1"
-                                        android:textAlignment="center"
-                                        android:textColor="#000"
-                                        android:textSize="18dp" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".3"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/increment1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:padding="2dp"
-                                        android:text="+"
-                                        android:textAlignment="center"
-                                        android:textColor="#DB3732"
-                                        android:textSize="18dp"
-                                        android:textStyle="bold" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.3"
-                            android:gravity="right"
-                            android:weightSum="1">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:gravity="right"
-                                android:text="S$ 04.40"
-                                android:textColor="#000" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="1.0">
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:text="Patao"
-                                android:textColor="#000" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.3"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:weightSum="1">
-
-                            <LinearLayout
-                                android:layout_width="fill_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:weightSum="1.0">
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".3"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/decrement2"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:padding="2dp"
-                                        android:text="-"
-                                        android:textAlignment="center"
-                                        android:textColor="#DB3732"
-                                        android:textSize="18dp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".4"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/num_pic2"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="@null"
-                                        android:text="1"
-                                        android:textAlignment="center"
-                                        android:textColor="#000"
-                                        android:textSize="18dp" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".3"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/increment2"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:padding="2dp"
-                                        android:text="+"
-                                        android:textAlignment="center"
-                                        android:textColor="#DB3732"
-                                        android:textSize="18dp"
-                                        android:textStyle="bold" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.3"
-                            android:gravity="right"
-                            android:weightSum="1">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:gravity="right"
-                                android:text="S$ 06.60"
-                                android:textColor="#000" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="1.0">
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".4"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/textView8"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:text="Broccoli"
-                                android:textColor="#000" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.3"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:weightSum="1">
-
-                            <LinearLayout
-                                android:layout_width="fill_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                android:weightSum="1.0">
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".3"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/decrement3"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:padding="2dp"
-                                        android:text="-"
-                                        android:textAlignment="center"
-                                        android:textColor="#DB3732"
-                                        android:textSize="18dp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".4"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/num_pic3"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="@null"
-                                        android:text="1"
-                                        android:textAlignment="center"
-                                        android:textColor="#000"
-                                        android:textSize="18dp" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dip"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".3"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/increment3"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:padding="2dp"
-                                        android:text="+"
-                                        android:textAlignment="center"
-                                        android:textColor="#DB3732"
-                                        android:textSize="18dp"
-                                        android:textStyle="bold" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dip"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.3"
-                            android:gravity="right"
-                            android:weightSum="1">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:gravity="right"
-                                android:text="S$ 04.00"
-                                android:textColor="#000" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerOrderSummery"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="vertical" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -515,7 +191,7 @@
                         android:paddingRight="20dp"
                         android:paddingTop="12dp">
 
-                        <TextView
+                        <com.anilxpert.food.custom_class.TextViewRegular
                             android:id="@+id/textView3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -536,27 +212,18 @@
                         android:paddingTop="12dp"
                         android:weightSum="1">
 
-                        <TextView
+                        <com.anilxpert.food.custom_class.TextViewRegularBold
+                            android:id="@+id/txtSubTotal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:gravity="right"
-                            android:text="S$ 15.40"
-                            android:textColor="#000" />
+
+                            android:textColor="@color/txtBlack" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-1dp"
-                    android:background="@drawable/bordrecolor"
-                    android:hint="Add a Promo Code"
-                    android:paddingBottom="12dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="12dp"
-                    android:textSize="13dp" />
+
             </LinearLayout>
 
 
@@ -564,74 +231,64 @@
 
 
         <LinearLayout
+            android:id="@+id/llBottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bordrecolor"
-                android:orientation="horizontal"
-                android:weightSum="1.0">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/gray" />
 
-                <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".5"
-                    android:orientation="horizontal"
-                    android:paddingBottom="12dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="12dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:text="Order Total"
-                        android:textAlignment="center"
-                        android:textColor="#000"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.50"
-                    android:gravity="right"
-                    android:paddingBottom="12dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="12dp"
-                    android:weightSum="1">
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:text="S$ 15.40"
-                        android:textAlignment="center"
-                        android:textColor="#000"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
+            <com.anilxpert.food.custom_class.TextViewRegular
+                android:id="@+id/txtCuponcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#DB3732"
-                android:gravity="center_horizontal"
-                android:paddingBottom="14dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="14dp"
-                android:text="PLACE ORDER"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
+
+                android:gravity="center"
+                android:minHeight="@dimen/dp_40"
+                android:text="@string/have_a_coupon_code"
+                android:textColor="@color/blue" />
+
+            <LinearLayout
+                android:id="@+id/llCoupnLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp_5"
+                android:visibility="gone">
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtCouponMsg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:minHeight="@dimen/dp_40"
+                    android:text="@string/have_a_coupon_code"
+                    android:textColor="@color/txtBlack"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/close_coupon"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_close" />
+            </LinearLayout>
+
+            <com.anilxpert.food.custom_class.RippleViewButton
+                android:id="@+id/btnPlaceOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/btnRed"
+                android:gravity="center"
+                android:minHeight="@dimen/dp_40"
+                android:text="@string/place_order"
+                android:textColor="@color/txtWhite" />
 
         </LinearLayout>
     </RelativeLayout>

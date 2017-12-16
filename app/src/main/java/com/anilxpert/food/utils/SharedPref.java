@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.anilxpert.food.R;
-
-
 /**
  * Created by wingstud on 24-03-2017.
  */

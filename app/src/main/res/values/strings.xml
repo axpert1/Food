@@ -32,6 +32,7 @@
     <string name="n_terms_of_use"> Terms of Use </string>
     <string name="n_privacy_policy"> Privacy Policy </string>
     <string name="n_contact_us"> Contact Us </string>
+    <string name="coupon_code">Apply Couponcode </string>
     <string name="n_sign_in"> Sign In </string>
     <string name="n_register"> Register </string>
     <string name="n_logout"> Logout </string>
@@ -40,6 +41,7 @@
     <string name="mobile_no">Mobile Number</string>
     <string name="email_address">Email </string>
     <string name="save">SAVE</string>
+    <string name="update">Update</string>
     <string name="password">Password</string>
 
     <!--tabs-->
@@ -64,4 +66,47 @@
     <string name="submit">Submit</string>
     <string name="message">Comment</string>
     <string name="price"> $ </string>
+    <string name="payableAmount">Pay Amount $ </string>
+    <string name="setMala"> You have not seleted MALA XIANG GUO itme. Please select item first.  </string>
+    <string name="setDry"> You have not seleted Dry or Soup. Please select Dry or Soup.  </string>
+    <string name="collection">Collection Time</string>
+    <string name="add_allergy_notes">Add allergy notes</string>
+    <string name="fieryspicy">Fiery Spicy</string>
+    <string name="place_order">Proceed to Pay</string>
+    <string name="place_order_">Place order</string>
+    <string name="have_a_coupon_code">Have a Couponcode ?</string>
+    <string name="have_a_coupon_code_hint">Have a Couponcode ? Enter here</string>
+    <string name="check">Check</string>
+    <string name="apply">Apply</string>
+    <string name="static_faq">
+
+          <h3>FAQ</h3>
+        <br>
+          <p>Why order from Xiao Man Niu Mala Xiang Guo?</p>
+        </br>
+          <p>Xiao Man Niu Mala Xiang Guo provides customers with an easy and quick access way to order the best takeaways and reservations orders in their area as food will then be ready when they reached our vicinity to avoid queues and waits.</p>
+          <p>Do I sign up for a account?</p>
+          <p>Yes</p>
+          <p>How does order work? </p>
+          <p>You can place order in our one of the food stall and collect.</p>
+          <p>How do I make payment? </p>
+          <p>You can make payment by credit card.</p>
+          <p>How do I provide feedback? </p>
+          <p>Send us your enquiry and we will get back to you.</p>
+
+</string>
+    <string name="about_us">Xiao Man Niu Mala Xiang Guo specialises in Chinese cuisine. They offer Mala Xiang Guo wherein all chosen and the spiciness level will be customisable. Spice up your meal now!
+
+Visit our website: www.xiaomanniu.com.sg
+</string>
+    <string name="CONTINUE_SHOPPING"> CONTINUE SHOPPING</string>
+    <string name="Your_Order_">Your Order is :</string>
+    <string name="Your_order_has_been_placed">Your order has been placed\nSuccessfully\nOrder Details </string>
+    <string name="Congratulations">CONGRATULATIONS!</string>
+    <string name="scan">Scan QR CODE</string>
+    <string name="applied"> applied successfully</string>
+    <string name="order_summary"> Order summary </string>
+    <string name="not_order_yet">No orders yet. Place your first order now!</string>
+
+    <!--<string name="place_order">Place order to Pay</string>-->
 </resources>

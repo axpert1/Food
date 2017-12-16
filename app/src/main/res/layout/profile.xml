@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ripple="http://schemas.android.com/tools"
     android:orientation="vertical">
+
+    <include layout="@layout/toobar" />
 
     <LinearLayout
         android:id="@+id/sininLayout"
@@ -15,7 +19,8 @@
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <com.anilxpert.food.custom_class.TextViewRegularBold
@@ -55,14 +60,15 @@
                 android:layout_weight="1"
                 android:gravity="right">
 
-                <com.anilxpert.food.custom_class.TextViewRegular
+                <com.anilxpert.food.custom_class.EditTextViewRegular
                     android:id="@+id/txtFName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
-                    android:textColor="@color/bgBlack" />
+                    android:textColor="@color/bgBlack"
+                    android:textSize="@dimen/sp_16" />
 
             </LinearLayout>
         </LinearLayout>
@@ -98,14 +104,15 @@
                 android:gravity="right"
                 android:weightSum="1">
 
-                <com.anilxpert.food.custom_class.TextViewRegular
+                <com.anilxpert.food.custom_class.EditTextViewRegular
                     android:id="@+id/txtLName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
-                    android:textColor="@color/bgBlack" />
+                    android:textColor="@color/bgBlack"
+                    android:textSize="@dimen/sp_16" />
 
             </LinearLayout>
         </LinearLayout>
@@ -142,14 +149,15 @@
 
                 android:weightSum="1">
 
-                <com.anilxpert.food.custom_class.TextViewRegular
+                <com.anilxpert.food.custom_class.EditTextViewRegular
                     android:id="@+id/txtMobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
-                    android:textColor="@color/txtBlack" />
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_16" />
 
             </LinearLayout>
         </LinearLayout>
@@ -192,7 +200,8 @@
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
-                    android:textColor="@color/txtBlack" />
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_16" />
 
             </LinearLayout>
         </LinearLayout>
@@ -201,20 +210,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone">
+        android:layout_marginTop="@dimen/dp_20"
+        android:gravity="center"
+        android:visibility="visible">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
+        <com.anilxpert.food.custom_class.RippleViewButton
+            android:id="@+id/btnUpdate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/btnRed"
             android:gravity="center"
             android:minHeight="@dimen/dp_40"
-            android:text="@string/save"
+
+
+
+            android:minWidth="@dimen/dp_100"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:text="@string/update"
             android:textColor="@color/txtWhite"
             android:textSize="@dimen/sp_18" />
 
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
 

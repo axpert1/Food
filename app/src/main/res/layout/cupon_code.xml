@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toobar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bordrecolor"
+        android:minHeight="@dimen/dp_40"
+        android:orientation="horizontal">
+
+        <com.anilxpert.food.custom_class.EditTextViewRegular
+            android:id="@+id/edtEnterCuponCode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/have_a_coupon_code_hint"
+            android:minHeight="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:text="Coupon100"
+            android:textSize="@dimen/sp_14" />
+
+        <com.anilxpert.food.custom_class.RippleViewButton
+            android:id="@+id/btnCheckCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:minHeight="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="@string/apply"
+            android:textColor="@color/txtWhite" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerCuponCode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+</LinearLayout>

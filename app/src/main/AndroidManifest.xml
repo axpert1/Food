@@ -3,7 +3,7 @@
     package="com.anilxpert.food">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:name=".AppInitialization"
         android:allowBackup="true"
@@ -36,6 +36,39 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activity.OrderSummryActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MyOrderActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.FaqActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.FindActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.PolicyActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.TermsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.ContectUsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.CuponCodeActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.PaymentOrder"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.ScaneCode"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.OrderDetails"
             android:screenOrientation="portrait"></activity>
 
         <meta-data

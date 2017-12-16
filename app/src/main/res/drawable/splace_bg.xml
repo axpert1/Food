@@ -5,7 +5,7 @@
         android:angle="90"
         android:centerColor="@color/orangeSplace"
         android:centerX="50%"
-        android:endColor="@color/colorPrimary"
-        android:startColor="@color/colorPrimary"
+        android:endColor="@color/btnRed"
+        android:startColor="@color/btnRed"
         android:type="linear" />
 </shape>

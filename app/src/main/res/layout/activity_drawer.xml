@@ -30,15 +30,6 @@
             android:orientation="vertical"
             android:paddingLeft="10dp">
 
-            <com.anilxpert.food.custom_class.TextViewRegular
-                android:id="@+id/home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_40"
-                android:padding="10dp"
-                android:text="@string/n_home"
-                android:textColor="@color/txtWhite"
-                android:textSize="@dimen/sp_16" />
 
             <com.anilxpert.food.custom_class.TextViewRegular
                 android:id="@+id/myprofile"

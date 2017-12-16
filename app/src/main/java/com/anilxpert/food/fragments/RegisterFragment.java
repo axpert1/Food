@@ -146,8 +146,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
                 SharedPref.putSP(ConstantField.USER_MOBILE, Utils.getEditText(etxtMobile));
                 SharedPref.putSP(ConstantField.USER_F_NAME, Utils.getEditText(etxtFName));
                 SharedPref.putSP(ConstantField.USER_L_NAME, Utils.getEditText(etxtLName));
-                Utils.clearPriviousActivity(mContext, DashBordActivity.class);
-            } else {
+                Utils.resultActivity(mContext);            } else {
                 dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), Utils.getEditText(etxtEmail) + "\n Email is already Exists", getString(R.string.cancel), "", this);
 
             }
@@ -160,8 +159,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
                 SharedPref.putSP(ConstantField.USER_MOBILE, "");
                 SharedPref.putSP(ConstantField.USER_F_NAME, fdSaveServer.fName);
                 SharedPref.putSP(ConstantField.USER_L_NAME, fdSaveServer.lName);
-                Utils.clearPriviousActivity(mContext, DashBordActivity.class);
-            }
+                Utils.resultActivity(mContext);            }
         }
 
     }
