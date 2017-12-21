@@ -35,6 +35,7 @@ import com.anilxpert.food.loopjServcice.NetworkManager;
 import com.anilxpert.food.models.CuponCodeListModel;
 import com.anilxpert.food.models.OrderListModel;
 import com.anilxpert.food.utils.AppUrl;
+import com.anilxpert.food.utils.SharedPref;
 import com.anilxpert.food.utils.Utils;
 import com.loopj.android.http.RequestParams;
 
@@ -44,7 +45,7 @@ import java.util.List;
  * Created by AnilXpert 9887230800 on 11/28/2017.
  */
 
-public class MyOrderActivity extends AppCompatActivity implements NetworkManager.onCallback {
+public class MyOrderActivity extends BaseActivity_ implements NetworkManager.onCallback {
     private TextView activity_title;
     private TextView txtCheck;
 
@@ -59,20 +60,13 @@ public class MyOrderActivity extends AppCompatActivity implements NetworkManager
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_order);
+        setupToolbar(getString(R.string.n_my_orders));
         mContext = MyOrderActivity.this;
         initialize();
     }
 
     private void initialize() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
-        activity_title = (TextView) findViewById(R.id.activity_title);
-        activity_title.setText(getString(R.string.n_my_orders));
+
         txtCheck = (TextView) findViewById(R.id.txtCheck);
         no_order = (LinearLayout) findViewById(R.id.no_order);
 
@@ -94,8 +88,14 @@ public class MyOrderActivity extends AppCompatActivity implements NetworkManager
 
             }
         }));
-        RequestParams params = CmdParams.orderList();
-        apiCall(getString(R.string.please_wait), AppUrl.GET_ORDER_LIST, params, true, ConstantField.WHITCH_1);
+        if (SharedPref.getSP(ConstantField.USER_ID) != null) {
+
+            RequestParams params = CmdParams.orderList();
+            apiCall(getString(R.string.please_wait), AppUrl.GET_ORDER_LIST, params, true, ConstantField.WHITCH_1);
+        } else {
+           no_order.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void apiCall(String apiTitle, String apiUrl, RequestParams requestParams, boolean progressBar, int apiWhitch) {
@@ -104,13 +104,7 @@ public class MyOrderActivity extends AppCompatActivity implements NetworkManager
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
-    }
+
 
     @Override
     public void onSuccess(boolean success, String response, int which) {

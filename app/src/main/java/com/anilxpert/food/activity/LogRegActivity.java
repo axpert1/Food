@@ -18,7 +18,7 @@ import com.anilxpert.food.utils.Utils;
  * Created by AnilXpert 9887230800 on 11/28/2017.
  */
 
-public class LogRegActivity extends AppCompatActivity {
+public class LogRegActivity extends BaseActivity_ {
     private Fragment fragment = null;
     private TextView activity_title;
     private String intentValue;
@@ -28,16 +28,8 @@ public class LogRegActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_reg);
         intentValue = Utils.getintentString(ConstantField.INTENT_1, getIntent());
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
+        setupToolbar(intentValue);
 
-        activity_title = (TextView) findViewById(R.id.activity_title);
-        activity_title.setText(intentValue);
         if (intentValue.equals(getString(R.string.str_sign_in))) {
             fragment = new SigninFragment();
             setScreen(fragment);
@@ -57,13 +49,6 @@ public class LogRegActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
-    }
 
     @Override
     public void onBackPressed() {

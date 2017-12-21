@@ -50,7 +50,7 @@ import static android.R.attr.type;
  * Created by AnilXpert 9887230800 on 11/28/2017.
  */
 
-public class OrderSelectActivity extends AppCompatActivity implements NetworkManager.onCallback, View.OnClickListener {
+public class OrderSelectActivity extends BaseActivity_ implements NetworkManager.onCallback, View.OnClickListener {
     private TextView activity_title;
     private TextView tabOne;
     private TextView tabTwo;
@@ -84,20 +84,11 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_select);
+        setupToolbar(getString(R.string.app_name));
         mContext = OrderSelectActivity.this;
         dilogCustom = new DilogCustom();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
 
-
-        activity_title = (TextView) findViewById(R.id.activity_title);
-        activity_title.setText(getString(R.string.app_name));
         SharedPref.removeSP(ConstantField.SELECTION_DATA);
         initialize();
 
@@ -267,13 +258,6 @@ public class OrderSelectActivity extends AppCompatActivity implements NetworkMan
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
-    }
 
     private void apiCall(String apiTitle, String apiUrl, RequestParams requestParams, boolean progressBar, int apiWhitch) {
         NetworkManager networkManager = new NetworkManager();

@@ -96,6 +96,7 @@ public class DashBordActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
+
         mContext = DashBordActivity.this;
         dilogCustom = new DilogCustom();
         // Utils.gethashKey(getApplicationContext());
@@ -244,6 +245,7 @@ public class DashBordActivity extends AppCompatActivity
             startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(startMain);
             finish();
+            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
         }
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Please BACK again to exit", Toast.LENGTH_SHORT).show();
@@ -331,16 +333,18 @@ public class DashBordActivity extends AppCompatActivity
                 break;
             case R.id.myorder:
                 drawerClose();
-                if (SharedPref.getSP(ConstantField.USER_ID) != null) {
-                    Utils.startActivity(mContext, MyOrderActivity.class);
-
-                } else {
-                    Utils.startActivityPutValueResultCode(mContext, LogRegActivity.class, getString(R.string.str_register), CODE_MYORDER);
-                }
+                Utils.startActivity(mContext, MyOrderActivity.class);
+//                if (SharedPref.getSP(ConstantField.USER_ID) != null) {
+//
+//
+//                } else {
+//                    Utils.startActivityPutValueResultCode(mContext, LogRegActivity.class, getString(R.string.str_register), CODE_MYORDER);
+//                }
 
                 break;
             case R.id.find:
                 drawerClose();
+                SharedPref.putboolSP(ConstantField.MAP_SET, true);
                 Utils.startActivity(mContext, FindActivity.class);
                 break;
             case R.id.contect_us:
@@ -390,6 +394,7 @@ public class DashBordActivity extends AppCompatActivity
                     dilogCustom.retryAlertDialog(mContext, getString(R.string.app_name), msg, getString(R.string.cancel), "", this);
 
                 } else {
+                    SharedPref.removeSP(ConstantField.MAP_SET);
                     Intent intent = new Intent(getApplicationContext(), FindActivity.class);
                     startActivityForResult(intent, FIND_US_RESULT);
                 }

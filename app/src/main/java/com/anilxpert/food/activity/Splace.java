@@ -1,8 +1,10 @@
 package com.anilxpert.food.activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.anilxpert.food.R;
 import com.anilxpert.food.loopjServcice.ConstantField;
@@ -16,6 +18,8 @@ public class Splace extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_splace);
         threadSplace();
+
+
     }
 
     private void threadSplace() {

@@ -43,10 +43,12 @@ public class ConstantField {
     public static String FIND_US = "find_us";
     public static String SELECTION_DATA = "selection_data";
     public static String USER_ORDER = "user_order";
+    public static String MAP_SET = "map_set";
 
 
     public static String ADDRESS_NAME = "address_name";
     public static String ADDRESS_ID = "address_id";
+    public static String MANAGE_ID = "manage_id";
     public static String DATE = "date";
     public static String TIME = "time";
     public static String COUPON_CODE_MSG = "coupon_code_msg";

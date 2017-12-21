@@ -28,7 +28,7 @@ import com.loopj.android.http.RequestParams;
  * Created by this pc on 11/24/2017.
  */
 
-public class ContectUsActivity extends AppCompatActivity implements View.OnClickListener, NetworkManager.onCallback {
+public class ContectUsActivity extends BaseActivity_ implements View.OnClickListener, NetworkManager.onCallback {
     private TextView activity_title;
     private Context mContext;
     private DilogCustom dilogCustom;
@@ -44,31 +44,25 @@ public class ContectUsActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contect_us);
+        setupToolbar(getString(R.string.n_contact_us));
         mContext = ContectUsActivity.this;
         dilogCustom = new DilogCustom();
         initialize();
+
+
         retryClick = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dilogCustom.dismissRetryAlert();
                 finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
         };
     }
 
 
     private void initialize() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
 
-
-        activity_title = (TextView) findViewById(R.id.activity_title);
-        activity_title.setText(getString(R.string.n_contact_us));
 
         btnSend = (Button) findViewById(R.id.btnSend);
         edtName = (EditText) findViewById(R.id.edtName);
@@ -129,12 +123,6 @@ public class ContectUsActivity extends AppCompatActivity implements View.OnClick
         }
 
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
-    }
+
 
 }

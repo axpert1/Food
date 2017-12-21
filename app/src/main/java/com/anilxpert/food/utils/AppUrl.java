@@ -21,6 +21,7 @@ public class AppUrl {
     public static String LOG_OUT = BASE_URL + USER_CONTROLLER + "logout" + TOKEN;
 
     public static String GET_USER_PROFILE = BASE_URL + USER_CONTROLLER + "get_user_profile" + TOKEN;
+    public static String UPDATE_MY_PROFILE = BASE_URL + USER_CONTROLLER + "my_profile" + TOKEN;
 
     public static String CONTACT_US = BASE_URL + USER_CONTROLLER + "contact_us" + TOKEN;
 

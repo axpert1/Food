@@ -36,7 +36,7 @@ import java.util.List;
  * Created by AnilXpert 9887230800 on 11/28/2017.
  */
 
-public class OrderSummryActivity extends AppCompatActivity implements View.OnClickListener {
+public class OrderSummryActivity extends BaseActivity_ implements View.OnClickListener {
     private static final int GET_COUPON = 1010;
     static final int FIND_US_RESULT = 9999;
 
@@ -69,20 +69,9 @@ public class OrderSummryActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_summery);
+        setupToolbar(getString(R.string.order_summary));
         mContext = OrderSummryActivity.this;
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
-
-
-        activity_title = (TextView) findViewById(R.id.activity_title);
-
-        activity_title.setText(getString(R.string.order_summary));
         initialize();
         //  Toast.makeText(mContext, SharedPref.getSP(ConstantField.USER_ORDER), Toast.LENGTH_LONG).show();
 
@@ -139,6 +128,7 @@ public class OrderSummryActivity extends AppCompatActivity implements View.OnCli
             setAmount(subTotal, totalAmount);
         } else {
             finish();
+            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
         }
 
 
@@ -170,13 +160,7 @@ public class OrderSummryActivity extends AppCompatActivity implements View.OnCli
         return pp;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
-    }
+
 
     @Override
     public void onBackPressed() {

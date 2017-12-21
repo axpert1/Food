@@ -138,6 +138,7 @@ public class Utils {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.setClass(context, class1);
         ((Activity) context).startActivity(intent);
+        ((Activity) context).overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     //to start any activity.
@@ -147,6 +148,7 @@ public class Utils {
         intent.setClass(context, class1);
         intent.putExtra(ConstantField.INTENT_1, value);
         ((Activity) context).startActivity(intent);
+        ((Activity) context).overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     //to start any activity.
@@ -156,6 +158,7 @@ public class Utils {
         intent.setClass(context, class1);
         intent.putExtra(ConstantField.INTENT_1, value);
         ((Activity) context).startActivityForResult(intent, resultCode);
+        ((Activity) context).overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     public static void resultActivity(Context mContext) {
@@ -164,6 +167,7 @@ public class Utils {
         // returnIntent.putExtra("anil", "anil");
         activity.setResult(Activity.RESULT_OK, returnIntent);
         activity.finish();
+        ((Activity) mContext).overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     //to start any activity.
@@ -177,6 +181,7 @@ public class Utils {
         intent.putExtra(ConstantField.INTENT_NOTES, notes);
         intent.putExtra(ConstantField.INTENT_TOTAL_AMOUNT, total_amount);
         ((Activity) context).startActivity(intent);
+        ((Activity) context).overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     public static void clearPriviousActivity(Context context, Class<?> class1) {
@@ -184,6 +189,7 @@ public class Utils {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
         ((Activity) context).finish();
+        ((Activity) context).overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     public static String getintentString(String key, Intent intent) {

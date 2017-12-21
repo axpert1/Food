@@ -78,6 +78,7 @@ public class CmdParams {
         params.put("date", SharedPref.getSP(ConstantField.DATE));
         params.put("time", SharedPref.getSP(ConstantField.TIME));
         params.put("location_id", SharedPref.getSP(ConstantField.ADDRESS_ID));
+        params.put("manager_id", SharedPref.getSP(ConstantField.MANAGE_ID));
         params.put("order_json", dataJson);
         params.put("total_amount", totalAmount);//total amount
         params.put("rest_amount", withDiscountAmount);//after discount
@@ -87,6 +88,15 @@ public class CmdParams {
         params.put("dry_or_soup", SharedPref.getSP(ConstantField.DRYSHOP_NAME));
 
 
+        return params;
+    }
+
+    public static RequestParams getProfileUpdateParams(String fName, String lName, String phone) {
+        RequestParams params = new RequestParams();
+        params.put("user_id", SharedPref.getSP(ConstantField.USER_ID));
+        params.put("f_name", fName);
+        params.put("l_name", lName);
+        params.put("mobile", phone);
         return params;
     }
 }

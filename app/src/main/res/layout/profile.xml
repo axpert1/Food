@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:ripple="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include layout="@layout/toobar" />
@@ -156,6 +156,7 @@
                     android:layout_marginRight="@dimen/dp_5"
                     android:background="@null"
                     android:gravity="center|right"
+                    android:inputType="phone"
                     android:textColor="@color/txtBlack"
                     android:textSize="@dimen/sp_16" />
 
@@ -221,7 +222,6 @@
             android:background="@color/btnRed"
             android:gravity="center"
             android:minHeight="@dimen/dp_40"
-
 
 
             android:minWidth="@dimen/dp_100"

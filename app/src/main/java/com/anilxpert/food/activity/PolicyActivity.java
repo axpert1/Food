@@ -16,34 +16,20 @@ import com.anilxpert.food.R;
  * Created by AnilXpert 9887230800 on 11/28/2017.
  */
 
-public class PolicyActivity extends AppCompatActivity {
+public class PolicyActivity extends BaseActivity_ {
     private TextView activity_title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.policy);
+        setupToolbar(getString(R.string.n_privacy_policy));
         // threadSplace();
         initialize();
     }
 
     private void initialize() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
 
-        activity_title = (TextView) findViewById(R.id.activity_title);
-        activity_title.setText(getString(R.string.n_privacy_policy));
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
-    }
+
 }

@@ -34,6 +34,7 @@ public class BaseActivity_ extends AppCompatActivity {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 return true;
         }
         return super.onOptionsItemSelected(item);

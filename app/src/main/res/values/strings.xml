@@ -107,6 +107,7 @@ Visit our website: www.xiaomanniu.com.sg
     <string name="applied"> applied successfully</string>
     <string name="order_summary"> Order summary </string>
     <string name="not_order_yet">No orders yet. Place your first order now!</string>
+    <string name="title_activity_maps">Map</string>
 
     <!--<string name="place_order">Place order to Pay</string>-->
 </resources>

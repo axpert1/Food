@@ -59,6 +59,8 @@ public class OrderDetails extends BaseActivity_ implements NetworkManager.onCall
     private SummeryModel summeryModel;
     private String intentData;
 
+    private String qrCode = "";
+
 
     public static int CAMERA_CODE = 1001;
     private RelativeLayout layout;
@@ -67,6 +69,7 @@ public class OrderDetails extends BaseActivity_ implements NetworkManager.onCall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_details);
+
         mContext = OrderDetails.this;
         intentData = Utils.getintentString(ConstantField.INTENT_1, getIntent());
         setupToolbar(getString(R.string.app_name));
@@ -100,7 +103,8 @@ public class OrderDetails extends BaseActivity_ implements NetworkManager.onCall
         txtScane.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                camerOpenFronQRcode();
+                Utils.startActivityPutValue(mContext, ShowQrCode.class, qrCode);
+                //camerOpenFronQRcode();
             }
         });
     }
@@ -119,6 +123,7 @@ public class OrderDetails extends BaseActivity_ implements NetworkManager.onCall
     public void onSuccess(boolean success, String response, int which) {
         OrderDetailsModel detailsModel = JsonDeserializer.deserializeJson(response, OrderDetailsModel.class);
         if (detailsModel.status == 1) {
+            qrCode = detailsModel.orderDetails.orderId;
             txtAddress.setText(detailsModel.orderDetails.locations.landMark + ", " + detailsModel.orderDetails.locations.location + ", " + detailsModel.orderDetails.locations.pincode + "\n" + detailsModel.orderDetails.locations.city + ", " + detailsModel.orderDetails.locations.state + ", " + detailsModel.orderDetails.locations.country);
             txtTimeAndDate.setText(detailsModel.orderDetails.date + "\n" + detailsModel.orderDetails.time);
             txtSpineies.setText(detailsModel.orderDetails.spicenessLevel.toUpperCase());

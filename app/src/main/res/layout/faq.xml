@@ -15,14 +15,142 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.anilxpert.food.custom_class.TextViewRegular
-                android:id="@+id/txtFaq"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/dp_10"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                android:textColor="@color/txtBlack"
-                android:textSize="@dimen/sp_16" />
+                <com.anilxpert.food.custom_class.TextViewRegularBold
+                    android:id="@+id/txtFaqOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtFaqOneAns"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="vertical">
+
+                <com.anilxpert.food.custom_class.TextViewRegularBold
+                    android:id="@+id/txtFaqTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtFaqTwoAns"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+
+                android:orientation="vertical">
+
+                <com.anilxpert.food.custom_class.TextViewRegularBold
+                    android:id="@+id/txtFaqThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtFaqThreeAns"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+
+                android:orientation="vertical">
+
+                <com.anilxpert.food.custom_class.TextViewRegularBold
+                    android:id="@+id/txtFaqFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtFaqFourAns"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+
+                android:orientation="vertical">
+
+                <com.anilxpert.food.custom_class.TextViewRegularBold
+                    android:id="@+id/txtFaqFive"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/txtBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <com.anilxpert.food.custom_class.TextViewRegular
+                    android:id="@+id/txtFaqFiveAns"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

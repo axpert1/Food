@@ -40,7 +40,8 @@ import java.util.List;
  * Created by AnilXpert 9887230800 on 11-Dec-17.
  */
 
-public class CuponCodeActivity extends AppCompatActivity implements View.OnClickListener, NetworkManager.onCallback {
+public class CuponCodeActivity extends BaseActivity_ implements View.OnClickListener, NetworkManager.onCallback {
+
     private TextView activity_title;
     private Button btnCheckCode;
     private EditText edtEnterCuponCode;
@@ -55,6 +56,7 @@ public class CuponCodeActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cupon_code);
+        setupToolbar(getString(R.string.coupon_code));
         mContext = CuponCodeActivity.this;
         dilogCustom = new DilogCustom();
         initialize();
@@ -63,23 +65,12 @@ public class CuponCodeActivity extends AppCompatActivity implements View.OnClick
             public void onClick(View view) {
                 dilogCustom.dismissRetryAlert();
                 finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
         };
     }
 
     private void initialize() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
-
-        activity_title = (TextView) findViewById(R.id.activity_title);
-        activity_title.setText(getString(R.string.coupon_code));
-
-
         edtEnterCuponCode = (EditText) findViewById(R.id.edtEnterCuponCode);
         btnCheckCode = (Button) findViewById(R.id.btnCheckCode);
 
@@ -102,7 +93,6 @@ public class CuponCodeActivity extends AppCompatActivity implements View.OnClick
 
             }
         }));
-
         apiCall(getString(R.string.please_wait), AppUrl.GET_COUPON_CODE_LIST, null, true, ConstantField.WHITCH_2);
     }
 
@@ -117,7 +107,6 @@ public class CuponCodeActivity extends AppCompatActivity implements View.OnClick
                 } else {
                     Toast.makeText(mContext, "Enter vaild Cuponcode. ", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
         }
 
@@ -131,6 +120,7 @@ public class CuponCodeActivity extends AppCompatActivity implements View.OnClick
         returnIntent.putExtra(ConstantField.COUPON_ID, couponID);
         activity.setResult(Activity.RESULT_OK, returnIntent);
         activity.finish();
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     private void apiCall(String apiTitle, String apiUrl, RequestParams requestParams, boolean progressBar, int apiWhitch) {
@@ -146,7 +136,6 @@ public class CuponCodeActivity extends AppCompatActivity implements View.OnClick
                 //  int coupon_code_discount, String coupon_code, String msg
                 resultActivity(coupModel.couponDetails.discountAmount, coupModel.couponDetails.id, getString(R.string.coupon_code) + "  " + coupModel.couponDetails.promoCode + "  " + getString(R.string.applied));
             }
-
         } else if (which == ConstantField.WHITCH_2) {
             CuponCodeListModel model = JsonDeserializer.deserializeJson(response, CuponCodeListModel.class);
             if (model.status == 1) {
@@ -155,23 +144,11 @@ public class CuponCodeActivity extends AppCompatActivity implements View.OnClick
                     CuponCodeListAdapter codeListAdapter = new CuponCodeListAdapter(mContext, model.couponDetails);
                     recyclerCuponCode.setAdapter(codeListAdapter);
                 }
-
             }
-
         }
-
     }
-
     @Override
     public void onFailure(boolean success, String response, int which) {
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
     }
 }

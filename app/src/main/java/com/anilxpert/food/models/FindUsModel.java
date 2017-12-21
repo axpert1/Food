@@ -24,7 +24,9 @@ public class FindUsModel {
 
         @SerializedName("id")
         @Expose
-        public String id;
+        public String id; @SerializedName("manager_id")
+        @Expose
+        public String managerId;
         @SerializedName("title")
         @Expose
         public String title;
@@ -48,10 +50,10 @@ public class FindUsModel {
         public String pincode;
         @SerializedName("lat")
         @Expose
-        public String lat;
+        public double lat;
         @SerializedName("lon")
         @Expose
-        public String lon;
+        public double lon;
         @SerializedName("open_day")
         @Expose
         public String openDay;

@@ -30,7 +30,7 @@ import com.loopj.android.http.RequestParams;
  * Created by AnilXpert 9887230800 on 12-Dec-17.
  */
 
-public class PaymentOrder extends AppCompatActivity implements View.OnClickListener, NetworkManager.onCallback {
+public class PaymentOrder extends BaseActivity_ implements View.OnClickListener, NetworkManager.onCallback {
 
     private TextView activity_title;
     private TextView txtPayAMount;
@@ -49,6 +49,7 @@ public class PaymentOrder extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment);
+        setupToolbar(getString(R.string.n_terms_of_use));
         mContext = PaymentOrder.this;
         intentData = Utils.getintentString(ConstantField.INTENT_DATA, getIntent());
         intentPrice = Utils.getintentString(ConstantField.INTENT_PRICE, getIntent());
@@ -63,16 +64,7 @@ public class PaymentOrder extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initialize() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
 
-        activity_title = (TextView) findViewById(R.id.activity_title);
-        activity_title.setText(getString(R.string.n_terms_of_use));
 
         txtPayAMount = (TextView) findViewById(R.id.txtPayAMount);
         btnPlaceOrder = (Button) findViewById(R.id.btnPlaceOrder);
@@ -89,13 +81,6 @@ public class PaymentOrder extends AppCompatActivity implements View.OnClickListe
         };
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
-    }
 
     @Override
     public void onClick(View view) {

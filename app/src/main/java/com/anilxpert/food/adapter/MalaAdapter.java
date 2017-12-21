@@ -58,9 +58,7 @@ public class MalaAdapter extends RecyclerView.Adapter<MalaAdapter.MyViewHolder> 
         this.context = context;
     }
 
-    public MalaAdapter() {
 
-    }
 
     @Override
     public MalaAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -103,12 +101,12 @@ public class MalaAdapter extends RecyclerView.Adapter<MalaAdapter.MyViewHolder> 
 
             }
         });
-        if (malaXiangGuo.qty > 0) {
+
+        if (malaXiangGuo.qty >= 0) {
             if (malaXiangGuo.price != null)
                 getTotalAmount(malaXiangGuo.qty, Integer.parseInt(malaXiangGuo.price));
             getQty(malaXiangGuo.qty);
             ((OrderSelectActivity) context).setQtyAndTotalPrice(qrtTotal, priceTotal);
-
         }
         // ((OrderSelectActivity) context).getSelectedData(malaXiangGuos);
 
@@ -164,13 +162,11 @@ public class MalaAdapter extends RecyclerView.Adapter<MalaAdapter.MyViewHolder> 
                         obj.put("name", malaXiangGuos.get(i).productName);
                         obj.put("qty", malaXiangGuos.get(i).qty);
                         obj.put("price", malaXiangGuos.get(i).price);
-
                         product.put(obj);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-
             }
         try {
             dataObj.put("data", product);
@@ -181,6 +177,4 @@ public class MalaAdapter extends RecyclerView.Adapter<MalaAdapter.MyViewHolder> 
         SharedPref.putSP(ConstantField.USER_ORDER, dataObj.toString());
         return dataObj.toString();
     }
-
-
 }

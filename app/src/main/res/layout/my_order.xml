@@ -12,12 +12,14 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/txtCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp_20"
             android:text="@string/not_order_yet"
             android:textColor="#999"
             android:textSize="15dp"

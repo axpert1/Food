@@ -56,6 +56,7 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnMenu:
                 Utils.startActivity(mContext, DashBordActivity.class);
                 finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
                 break;
         }
 
@@ -68,6 +69,7 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
             if (resultCode == Activity.RESULT_OK) {
                 Utils.startActivity(mContext, DashBordActivity.class);
                 finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
         }
 

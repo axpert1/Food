@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="que_one">Why order from Xiao Man Niu Mala Xiang Guo?</string>
+    <string name="que_two">Do I sign up for a account?</string>
+    <string name="que_three">How does order work? </string>
+    <string name="que_foue">How do I make payment? </string>
+    <string name="que_five">How do I provide feedback? </string>
+
+    <string name="ans_one">Xiao Man Niu Mala Xiang Guo provides customers with an easy and quick access way to order the best takeaways and reservations orders in their area as food will then be ready when they reached our vicinity to avoid queues and waits.</string>
+    <string name="ans_two">Yes</string>
+    <string name="ans_three">You can place order in our one of the food stall and collect.</string>
+    <string name="ans_foue">You can make payment by credit card.</string>
+    <string name="ans_five">Send us your enquiry and we will get back to you.</string>
+
+
+
+</resources>

@@ -36,6 +36,13 @@ import com.anilxpert.food.models.OrderSelectModel;
 import com.anilxpert.food.utils.AppUrl;
 import com.anilxpert.food.utils.SharedPref;
 import com.anilxpert.food.utils.Utils;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.RequestParams;
 
 import java.util.ArrayList;
@@ -46,7 +53,7 @@ import java.util.List;
  * Created by this pc on 11/23/2017.
  */
 
-public class FindActivity extends AppCompatActivity implements View.OnClickListener, NetworkManager.onCallback {
+public class FindActivity extends BaseActivity_ implements View.OnClickListener, NetworkManager.onCallback, OnMapReadyCallback {
     private TextView activity_title;
     private TextView temp_one_et;
     private Context mContext;
@@ -56,27 +63,25 @@ public class FindActivity extends AppCompatActivity implements View.OnClickListe
 
     private List<FindUsModel.LocationsData> locations = new ArrayList<>();
 
+
+    private GoogleMap mMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find);
         mContext = FindActivity.this;
+        setupToolbar(getString(R.string.n_find_us));
         // threadSplace();
         initialize();
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     private void initialize() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left);
 
-
-        activity_title = (TextView) findViewById(R.id.activity_title);
-        activity_title.setText(getString(R.string.n_find_us));
 
         recyclerFindUs = (RecyclerView) findViewById(R.id.recyclerFindUs);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext);
@@ -86,11 +91,20 @@ public class FindActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view, int position) {
                 FindUsModel.LocationsData malaXiangGuo = locations.get(position);
-                SharedPref.putboolSP(ConstantField.FIND_US, true);
-                SharedPref.putSP(ConstantField.ADDRESS_NAME, malaXiangGuo.landMark + ", " + malaXiangGuo.location + ", " + malaXiangGuo.pincode + "\n" + malaXiangGuo.city + ", " + malaXiangGuo.state + ", " + malaXiangGuo.country);
-                SharedPref.putSP(ConstantField.ADDRESS_ID,malaXiangGuo.id );
-                 Utils.resultActivity(mContext);
-                //  ((DashBordActivity) getActivity()).gotoNextScreen(new HomeFragment(), mContext.getString(R.string.n_home));
+                if (SharedPref.getboolSP(ConstantField.MAP_SET)) {
+                    LatLng findPoss = new LatLng(malaXiangGuo.lat, malaXiangGuo.lon);
+                    updateCamera(findPoss, malaXiangGuo.title.toUpperCase());
+                } else {
+
+                    SharedPref.putboolSP(ConstantField.FIND_US, true);
+                    SharedPref.putSP(ConstantField.ADDRESS_NAME, malaXiangGuo.landMark + ", " + malaXiangGuo.location + ", " + malaXiangGuo.pincode + "\n" + malaXiangGuo.city + ", " + malaXiangGuo.state + ", " + malaXiangGuo.country);
+                    SharedPref.putSP(ConstantField.ADDRESS_ID, malaXiangGuo.id);
+                    SharedPref.putSP(ConstantField.MANAGE_ID, malaXiangGuo.managerId);
+                    Utils.resultActivity(mContext);
+                    //  ((DashBordActivity) getActivity()).gotoNextScreen(new HomeFragment(), mContext.getString(R.string.n_home));
+
+                }
+
             }
 
             @Override
@@ -138,14 +152,26 @@ public class FindActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return true;
+
+
+    private void updateCamera(LatLng initialLoc, String name) {
+        //mMap.clear();
+        CameraUpdate update = CameraUpdateFactory.newLatLng(initialLoc);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
+        mMap.addMarker(new MarkerOptions().position(initialLoc).title(name));
+
+        mMap.moveCamera(update);
+        mMap.animateCamera(zoom);
 
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
 
+//        // Add a marker in Sydney and move the camera
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
 }
